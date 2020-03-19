@@ -22,7 +22,7 @@ RUN \
   do $SYSTEM.OBJ.Load("Installer.cls", "ck") \
   set sc = ##class(App.Installer).setup() \
   zn "IRISAPP" \
-  set pfile = "/opt/irisapp/files/covid-03-16-2020.csv", rc=0 \
+  set pfile = "/opt/irisapp/files/covid-03-18-2020.csv", rc=0 \
   do ##class(AnalyzeThis.Generated.covid03162020).Import(,pfile,",", ,1,.rc) \
   write "imported records: "_rc \
   do ##class(%DeepSee.Utils).%BuildCube("covid03162020") \
