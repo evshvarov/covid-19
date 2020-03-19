@@ -1,10 +1,13 @@
-// 1. Delete class AnalyzeThis.Generated.covid03162020 on the server
-// 2 call Run method which will generated together with Import method
-// 3. Export class AnalyzeThis.Generated.covid03162020 and copy-n-paste properties from repo from the same class
-// 4. Use method Import to import the data from file
-
 Class AnalyzeThis.GenerateImportCSV
 {
+
+// 1. Delete class AnalyzeThis.Generated.covid03162020 on the server
+
+// 2 call Run method which will generated together with Import method
+
+// 3. Export class AnalyzeThis.Generated.covid03162020 and copy-n-paste properties from repo from the same class
+
+// 4. Use method Import to import the data from file
 
 ClassMethod Run() As %Status
 {

@@ -14,16 +14,19 @@ USER irisowner
 
 COPY  Installer.cls .
 COPY  src src
-COPY  data data
+COPY  data files
 COPY irissession.sh /
 SHELL ["/irissession.sh"]
 
 RUN \
   do $SYSTEM.OBJ.Load("Installer.cls", "ck") \
   set sc = ##class(App.Installer).setup() \
-  set pfile = "/opt/irisapp/data/covid-03-16-2020.csv", rc=0 \
+  zn "IRISAPP" \
+  zpm "install analyzethis" \
+  set pfile = "/opt/irisapp/files/covid-03-16-2020.csv", rc=0 \
   do ##class(AnalyzeThis.Generated.covid03162020).Import(,pfile,",", ,1,.rc) \
   write "imported records: "_rc \
-  do ##class(%DeepSee.Utils).%BuildCube("covid03162020")
+  do ##class(%DeepSee.Utils).%BuildCube("covid03162020") \
+  zpm "install dsw" 
 # bringing the standard shell back
 SHELL ["/bin/bash", "-c"]
