@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: covid19-analytics
+  namespace: iris
+spec:
+  selector:
+    app: covid19-analytics
+  ports:
+  - protocol: TCP
+    port: 52773
+    targetPort: 52773
+  type: LoadBalancer

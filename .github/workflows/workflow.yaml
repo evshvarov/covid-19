@@ -1,0 +1,118 @@
+name: Build Covid19-analytics image, deploy it to GCR. Run GKE. Run Covid19-analytics in GKE
+
+on:
+  push:
+    branches:
+    - master
+
+# Environment variables.
+# ${{ secrets }} are taken from GitHub -> Settings -> Secrets
+# ${{ github.sha }} is the commit hash
+env:
+  PROJECT_ID: ${{ secrets.PROJECT_ID }}
+  SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+  GOOGLE_CREDENTIALS: ${{ secrets.TF_SERVICE_ACCOUNT_KEY }}
+  GITHUB_SHA: ${{ github.sha }}
+  GCR_LOCATION: ${{ secrets.GCR_LOCATION }}
+  IMAGE_NAME: ${{ secrets.IMAGE_NAME }}
+  GKE_CLUSTER: ${{ secrets.GKE_CLUSTER }}
+  GKE_ZONE: ${{ secrets.GKE_ZONE }}
+  K8S_NAMESPACE: iris
+  STATEFULSET_NAME: covid19-analytics
+
+jobs:
+  gcloud-setup-and-build-and-publish-to-GCR:
+    name: Setup gcloud utility, Build COVID19 image and Publish it to Container Registry
+    runs-on: ubuntu-18.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup gcloud cli
+      uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+      with:
+        version: '275.0.0'
+        service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+
+    - name: Configure docker to use the gcloud as a credential helper
+      run: |
+        gcloud auth configure-docker
+
+    - name: Build COVID19 image
+      run: |
+        docker build -t ${GCR_LOCATION}/${PROJECT_ID}/${IMAGE_NAME}:${GITHUB_SHA} .
+
+    - name: Publish COVID19 image to Google Container Registry
+      run: |
+        docker push ${GCR_LOCATION}/${PROJECT_ID}/${IMAGE_NAME}:${GITHUB_SHA}
+
+  gke-provisioner:
+    # Inspired by:
+    ## https://www.terraform.io/docs/github-actions/getting-started.html
+    ## https://github.com/hashicorp/terraform-github-actions
+    name: Provision GKE cluster
+    runs-on: ubuntu-18.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Terraform init
+      uses: hashicorp/terraform-github-actions@master
+      with:
+        tf_actions_version: 0.12.17
+        tf_actions_subcommand: 'init'
+        tf_actions_working_dir: 'terraform'
+
+    - name: Terraform validate
+      uses: hashicorp/terraform-github-actions@master
+      with:
+        tf_actions_version: 0.12.17
+        tf_actions_subcommand: 'validate'
+        tf_actions_working_dir: 'terraform'
+
+    - name: Terraform plan
+      uses: hashicorp/terraform-github-actions@master
+      with:
+        tf_actions_version: 0.12.17
+        tf_actions_subcommand: 'plan'
+        tf_actions_working_dir: 'terraform'
+
+    - name: Terraform apply
+      uses: hashicorp/terraform-github-actions@master
+      with:
+        tf_actions_version: 0.12.17
+        tf_actions_subcommand: 'apply'
+        tf_actions_working_dir: 'terraform'
+
+  kubernetes-deploy:
+    name: Deploy Kubernetes manifests to GKE cluster
+    needs:
+    - gcloud-setup-and-build-and-publish-to-GCR
+    - gke-provisioner
+    runs-on: ubuntu-18.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Replace placeholders with values in statefulset template
+      working-directory: ./k8s/
+      run: |
+        cat statefulset.tpl |\
+        sed "s|DOCKER_REPO_NAME|${GCR_LOCATION}/${PROJECT_ID}/${IMAGE_NAME}|" |\
+        sed "s|DOCKER_IMAGE_TAG|${GITHUB_SHA}|" > statefulset.yaml
+        cat statefulset.yaml
+
+    - name: Setup gcloud cli
+      uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+      with:
+        version: '275.0.0'
+        service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+
+    - name: Apply Kubernetes manifests
+      working-directory: ./k8s/
+      run: |
+        gcloud container clusters get-credentials ${GKE_CLUSTER} --zone ${GKE_ZONE} --project ${PROJECT_ID}
+        kubectl apply -f namespace.yaml
+        kubectl apply -f service.yaml
+        kubectl apply -f statefulset.yaml
+        kubectl -n ${K8S_NAMESPACE} rollout status statefulset/${STATEFULSET_NAME}
