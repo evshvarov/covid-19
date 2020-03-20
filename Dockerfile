@@ -22,11 +22,18 @@ RUN \
   do $SYSTEM.OBJ.Load("Installer.cls", "ck") \
   set sc = ##class(App.Installer).setup() \
   zn "IRISAPP" \
-  set pfile = "/opt/irisapp/files/covid-03-18-2020.csv", rc=0 \
+  set pfile = "/opt/irisapp/files/covid-"_$tr($zd($h-1),"/","-")_".csv", rc=0 \
   do ##class(AnalyzeThis.Generated.covid03162020).Import(,pfile,",", ,1,.rc) \
   write "imported records: "_rc \
   do ##class(%DeepSee.Utils).%BuildCube("covid03162020") \
-  zpm "install dsw" 
+  zpm "install dsw" \
+  zn "%SYS" \
+  write "Modify MDX2JSON application security...",! \
+  set webName = "/mdx2json" \
+  set webProperties("AutheEnabled") = 64 \
+  set webProperties("MatchRoles")=":%DB_IRISAPP" \
+  set sc = ##class(Security.Applications).Modify(webName, .webProperties) \
+  if sc<1 write $SYSTEM.OBJ.DisplayError(sc) 
 # bringing the standard shell back
 SHELL ["/bin/bash", "-c"]
 
