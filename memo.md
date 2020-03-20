@@ -1,5 +1,5 @@
-# COVID19 Pandemia Stats
-## LAST UPDATED 
+## COVID19 Pandemia Stats
+### LAST UPDATED 
 19 March 2020
-## Data Source
+### Data Source
 [John Hopkins](https://github.com/CSSEGISandData/COVID-19)
