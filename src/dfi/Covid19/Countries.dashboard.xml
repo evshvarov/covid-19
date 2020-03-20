@@ -13,10 +13,13 @@
   </widget>
   <widget name="Widget4" type="meter" subtype="textMeter" subtypeClass="" title="Recovered" dataSource="Covid19/Recovered.pivot" dataLink="" drillDownDataSource="" width="200" height="200" sidebarContent="" showSidebar="false" sidebarWidth="" maximized="false" homeRowL="0" homeColL="6" colSpanL="3" rowSpanL="4" showToolbar="true" showToolbarBottomBorder="true" showToolbarOnlyWhenMaximized="false" colorToolbar="#F0F0F0" opacityToolbar="1" backgroundColor="#F0F0F0" opacity="1" theme="" dataColorList="">
   </widget>
-  <widget name="Widget5" type="pivot" subtype="columnChartStacked" subtypeClass="barChart" title="Top 10 countries by cases" dataSource="" dataLink="Widget1" drillDownDataSource="" width="200" height="200" sidebarContent="" showSidebar="false" sidebarWidth="" maximized="false" homeRowL="4" homeColL="6" colSpanL="4" rowSpanL="4" showToolbar="true" showToolbarBottomBorder="true" showToolbarOnlyWhenMaximized="false" colorToolbar="#F0F0F0" opacityToolbar="1" backgroundColor="#F0F0F0" opacity="1" theme="" dataColorList="">
+  <widget name="Widget5" type="pivot" subtype="columnChart" subtypeClass="barChart" title="Top 10 countries by cases" dataSource="" dataLink="Widget1" drillDownDataSource="" width="200" height="200" sidebarContent="" showSidebar="false" sidebarWidth="" maximized="false" homeRowL="4" homeColL="6" colSpanL="4" rowSpanL="4" showToolbar="true" showToolbarBottomBorder="true" showToolbarOnlyWhenMaximized="false" colorToolbar="#F0F0F0" opacityToolbar="1" backgroundColor="#F0F0F0" opacity="1" theme="" dataColorList="">
     <control name="" action="setRowCount" target="" targetProperty="" location="widget" type="auto" controlClass="" label="" title="" value="10" text="" readOnly="false" valueList="" displayList="" activeWhen="">
       <valueRequired>true</valueRequired>
     </control>
+  </widget>
+  <widget name="Widget6" type="portlet" subtype="DSW.Addons.htmlViewer" subtypeClass="" title="" dataSource="Covid19/Figures.pivot" dataLink="" drillDownDataSource="" width="200" height="200" sidebarContent="" showSidebar="false" sidebarWidth="" maximized="false" homeRowL="2" homeColL="8" colSpanL="2" rowSpanL="2" showToolbar="true" showToolbarBottomBorder="true" showToolbarOnlyWhenMaximized="false" colorToolbar="#F0F0F0" opacityToolbar="1" backgroundColor="#F0F0F0" opacity="1" theme="" dataColorList="">
+    <property name="Data">https://codepen.io/evshvarov/live/PoqBEdm</property>
   </widget>
 </dashboard>
 </Document></Export>

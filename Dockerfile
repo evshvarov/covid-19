@@ -27,6 +27,7 @@ RUN \
   write "imported records: "_rc \
   do ##class(%DeepSee.Utils).%BuildCube("covid03162020") \
   zpm "install dsw" \
+  do EnableDeepSee^%SYS.cspServer("/csp/irisapp/") \
   zn "%SYS" \
   write "Modify MDX2JSON application security...",! \
   set webName = "/mdx2json" \
