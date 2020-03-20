@@ -18,7 +18,3 @@ Pivots and Dashboards were built manually using [InterSystems IRIS Analytics](ht
 It's being deployed by Github Actions using this workflow
 Which uses terraform and K8 configuration.
 Dockerfile loads sources, pivot and dashboard. It imports data and builds cube.
-
-
-
-[Read about all the files in this artilce](https://community.intersystems.com/post/dockerfile-and-friends-or-how-run-and-collaborate-objectscript-projects-intersystems-iris)
