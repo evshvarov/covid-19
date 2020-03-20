@@ -18,3 +18,52 @@ Pivots and Dashboards were built manually using [InterSystems IRIS Analytics](ht
 It's being deployed by Github Actions using this workflow
 Which uses terraform and K8 configuration.
 Dockerfile loads sources, pivot and dashboard. It imports data and builds cube.
+
+## Installation 
+
+Open terminal and clone/git pull the repo into any local directory
+
+```
+$ git clone git@github.com:intersystems-community/objectscript-contest-template.git
+```
+
+Open the terminal in this directory and run:
+
+```
+$ docker-compose build
+```
+
+3. Run the IRIS container with your project:
+
+```
+$ docker-compose up -d
+```
+
+## How to Run the Application
+
+Open InterSystems IRIS terminal:
+
+```
+$ docker-compose exec iris iris session iris
+USER>zn "IRISAPP"
+IRISAPP>do ##class(Contest.ObjectScript).TheUniverseQuestion()
+42
+```
+## How to start coding
+This repository is ready to code in VSCode with ObjectScript plugin.
+Install [VSCode](https://code.visualstudio.com/), [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker) and [ObjectScript](https://marketplace.visualstudio.com/items?itemName=daimor.vscode-objectscript) plugins and open the folder in VSCode.
+
+Right-click on **docker-compose.yml** file and click Compose Restart
+
+Once docker will finish starting procedure and show:
+
+```
+Creating objectscript-contest-template_iris_1 ... done
+```
+
+Click on the ObjectScript status bar and select Refresh connection in the menu.
+Wait for VSCode to make connection and show something like "localhost:32778[IRISAPP] - Connected"
+
+You can start coding after that. 
+
+Contributions are welcome via Pull Requests
