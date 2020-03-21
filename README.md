@@ -33,22 +33,7 @@ Open the terminal in this directory and run:
 $ docker-compose build
 ```
 
-3. Run the IRIS container with your project:
 
-```
-$ docker-compose up -d
-```
-
-## How to Run the Application
-
-Open InterSystems IRIS terminal:
-
-```
-$ docker-compose exec iris iris session iris
-USER>zn "IRISAPP"
-IRISAPP>do ##class(Contest.ObjectScript).TheUniverseQuestion()
-42
-```
 ## How to start coding
 This repository is ready to code in VSCode with ObjectScript plugin.
 Install [VSCode](https://code.visualstudio.com/), [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker) and [ObjectScript](https://marketplace.visualstudio.com/items?itemName=daimor.vscode-objectscript) plugins and open the folder in VSCode.
