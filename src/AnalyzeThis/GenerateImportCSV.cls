@@ -19,7 +19,7 @@ ClassMethod Run() As %Status
 
 ClassMethod Import() As %Status
 {
-    s pfile="/irisdev/app/data/covid-03-16-2020.csv"
+    s pfile="/irisdev/app/data/covid-03-23-2020.csv"
     s rc=0
     do ##class(AnalyzeThis.Generated.covid03162020).Import(,pfile,",", ,1, rc)
     w rc

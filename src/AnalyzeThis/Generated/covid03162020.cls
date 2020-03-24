@@ -19,6 +19,10 @@ Property ProvinceState As %String(MAXLEN = "") [ SqlColumnNumber = 2 ];
 
 Property Recovered As %Integer [ SqlColumnNumber = 7 ];
 
+Property FIPS As %Integer;
+
+Property City As %String(MAXLEN = "");
+
 Method LastUpdateSet(pVal) As %Status
 {
  Try { Set pVal=+$zdth(pVal,3) }
@@ -40,14 +44,17 @@ ClassMethod Import(pSelectMode As %Library.Integer = {$zu(115,5)}, pFileName As 
 			while tImporter.%Next() {
 				set tMe = ..%New()
 				if 'pSelectMode {
-					set tMe.ProvinceState = tImporter.%GetData(1)
-					set tMe.CountryRegion = tImporter.%GetData(2)
-					set tMe.LastUpdate = tImporter.%GetData(3)
-					set tMe.Confirmed = tImporter.%GetData(4)
-					set tMe.Deaths = tImporter.%GetData(5)
-					set tMe.Recovered = tImporter.%GetData(6)
-					set tMe.Latitude = tImporter.%GetData(7)
-					set tMe.Longitude = tImporter.%GetData(8)
+					set tMe.FIPS = tImporter.%GetData(1)
+					set tMe.City = tImporter.%GetData(2)
+					set tMe.ProvinceState = tImporter.%GetData(3)
+					set tMe.CountryRegion = tImporter.%GetData(4)
+					set tMe.LastUpdate = tImporter.%GetData(5)
+					set tMe.Latitude = tImporter.%GetData(6)
+					set tMe.Longitude = tImporter.%GetData(7)
+					set tMe.Confirmed = tImporter.%GetData(8)
+					set tMe.Deaths = tImporter.%GetData(9)
+					set tMe.Recovered = tImporter.%GetData(10)
+					
 				}
 				elseif pSelectMode = 1 {
 					set tMe.ProvinceState = $s('$system.CLS.IsMthd("ProvinceStateOdbcToLogical"):tImporter.%GetData(1),1:tMe.ProvinceStateOdbcToLogical(tImporter.%GetData(1)))
@@ -80,7 +87,7 @@ ClassMethod Import(pSelectMode As %Library.Integer = {$zu(115,5)}, pFileName As 
 	quit tCounter
 }
 
-Parameter ROWTYPE = "ProvinceState VARCHAR(100),CountryRegion VARCHAR(100),LastUpdate DATE,Confirmed INTEGER,Deaths INTEGER,Recovered INTEGER,Latitude VARCHAR(50),Longitude VARCHAR(50)";
+Parameter ROWTYPE = "FIPS INTEGER, CITY VARCHAR(100), ProvinceState VARCHAR(100),CountryRegion VARCHAR(100),LastUpdate DATE,Confirmed INTEGER,Deaths INTEGER,Recovered INTEGER,Latitude VARCHAR(50),Longitude VARCHAR(50)";
 
 Storage Default
 {
@@ -111,6 +118,12 @@ Storage Default
 </Value>
 <Value name="9">
 <Value>Recovered</Value>
+</Value>
+<Value name="10">
+<Value>FIPS</Value>
+</Value>
+<Value name="11">
+<Value>City</Value>
 </Value>
 </Data>
 <DataLocation>^AnalyzeThis.G.covid03162020D</DataLocation>
