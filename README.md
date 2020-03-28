@@ -1,7 +1,13 @@
 # Covid-19 analytics
 This is an [interactive dashboard](http://35.241.213.177:52773/dsw/index.html#!/d/Covid19/Countries.dashboard?ns=IRISAPP) on the analytics for covid-19 pandemia.
+![alt text](https://openexchange.intersystems.com/mp/img/packages/512/screenshots/m5qo04fsyhieyjzmgkmjzborr8.png "Dashboard1")
+
+Another dashboard [shows the timeline](http://35.241.213.177:52773/dsw/index.html#!/d/Covid19/Daily.dashboard?ns=IRISAPP):
+![alt text](https://openexchange.intersystems.com/mp/img/packages/554/screenshots/tmpg10c7abe4bfzubrq8jserue4.png "Dashboard2")
+
+
 ## data source
-The data is taken from [John Hopkins repo](https://github.com/CSSEGISandData/COVID-19)
+The data is taken from [Johns Hopkins repo](https://github.com/CSSEGISandData/COVID-19)
 
 ## How it works
 The dashboard is running on InterSystems IRIS 2019.4 Community Edition
