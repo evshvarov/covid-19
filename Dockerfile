@@ -22,11 +22,11 @@ RUN \
   do $SYSTEM.OBJ.Load("Installer.cls", "ck") \
   set sc = ##class(App.Installer).setup() \
   zn "IRISAPP" \
-  set pfile = "/opt/irisapp/files/covid-"_$tr($zd($h-1),"/","-")_".csv", rc=0 \
-  do ##class(AnalyzeThis.Generated.covid03162020).Import(,pfile,",", ,1,.rc) \
-  write "imported records: "_rc \
-  do ##class(%DeepSee.Utils).%BuildCube("covid03162020") \
+  zpm "install sslclient" \
+  do ##class(Covid19.Utils).ImportData() \
   zpm "install dsw" \
+  zpm "install isc-dev" \
+  do ##class(dev.code).workdir("/irisdev/app/src") \
   do EnableDeepSee^%SYS.cspServer("/csp/irisapp/") \
   zn "%SYS" \
   write "Modify MDX2JSON application security...",! \
