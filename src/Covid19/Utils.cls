@@ -1,9 +1,9 @@
 Class Covid19.Utils
 {
 
-Parameter TSConfirmed = "time_series_covid19_confirmed_global.csv";
+Parameter TSConfirmed = "csse_covid_19_time_series/time_series_covid19_confirmed_global.csv";
 
-Parameter TSDeaths = "time_series_covid19_deaths_global.csv";
+Parameter TSDeaths = "csse_covid_19_time_series/time_series_covid19_deaths_global.csv";
 
 Parameter TSrecovered = "time_series_covid19_recovered_global.csv";
 
@@ -19,7 +19,6 @@ ClassMethod ImportData() As %Status
 
 ClassMethod ImportDays() As %Status
 {
-    s pfile="time_series_covid19_confirmed_global.csv"
     s streamConfirmed=..GetStreamFromRepo(..#TSConfirmed)
     s streamDeaths=..GetStreamFromRepo(..#TSDeaths)
     d ..Import(streamConfirmed,streamDeaths)
@@ -33,7 +32,8 @@ ClassMethod GetStreamFromRepo(fn As %String) As %CharacterStream
     Set httprequest.Server = "raw.githubusercontent.com"
     Set httprequest.Https = 1
     Set httprequest.SSLConfiguration = "default"
-    set urlts="/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/"
+    set urlts="/CSSEGISandData/COVID-19/master/csse_covid_19_data/"
+    set urlcsv="/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/"
     $$$TOE(sc,httprequest.Get(urlts_fn))
     Set stream = httprequest.HttpResponse.Data
 
