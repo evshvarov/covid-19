@@ -36,7 +36,7 @@ Dockerfile loads sources, pivot and dashboard. It imports data and builds cube.
 Open terminal and clone/git pull the repo into any local directory
 
 ```
-$ git clone git@github.com:intersystems-community/objectscript-contest-template.git
+$ git clone git@github.com:evshvarov/covid-19.git
 ```
 
 Open the terminal in this directory and run:
@@ -55,7 +55,7 @@ Right-click on **docker-compose.yml** file and click Compose Restart
 Once docker will finish starting procedure and show:
 
 ```
-Creating objectscript-contest-template_iris_1 ... done
+Creating covid-19_iris_1 ... done
 ```
 
 Click on the ObjectScript status bar and select Refresh connection in the menu.
