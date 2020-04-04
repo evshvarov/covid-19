@@ -8,8 +8,7 @@
   </columnAxisOptions>
   <columnLevel spec="[Day].[All Time]" key="" value="" text="Day" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
   </columnLevel>
-  <columnLevel spec="[Day].[H1].[Day].&amp;[NOW]" key="" value="[Day].[H1].[Day].&amp;[NOW-1]
-" text="NOW" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="delta1" levelFormat="" levelSummary="" levelType="mdx" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
+  <columnLevel spec="[Day].[H1].[Day].&amp;[NOW]" key="" value="[Day].[H1].[Day].&amp;[NOW-1] " text="NOW" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="delta1" levelFormat="" levelSummary="" levelType="mdx" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
   </columnLevel>
   <sqlRestriction></sqlRestriction>
   <measure spec="[Measures].[ConfirmedNew]" key="" value="" text="ConfirmedNew" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="#,###" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
