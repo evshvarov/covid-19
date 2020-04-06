@@ -5,12 +5,19 @@ Parameter TSConfirmed = "csse_covid_19_time_series/time_series_covid19_confirmed
 
 Parameter TSDeaths = "csse_covid_19_time_series/time_series_covid19_deaths_global.csv";
 
-Parameter TSrecovered = "time_series_covid19_recovered_global.csv";
+Parameter TSrecovered = "csse_covid_19_time_series/time_series_covid19_recovered_global.csv";
+
+Parameter TSYesterdayFile = "csse_covid_19_daily_reports/";
 
 ClassMethod ImportData() As %Status
 {
   set pfile = "/opt/irisapp/files/covid-"_$tr($zd($h-1),"/","-")_".csv", rc=0 
-  do ##class(AnalyzeThis.Generated.covid03162020).Import(,pfile,",", ,1,.rc) 
+  set pYesterdayFile=..#TSYesterdayFile_$tr($zd($h-1),"/","-")_".csv"
+  
+  set streamYesterday=..GetStreamFromRepo(pYesterdayFile,1)
+  do ##class(AnalyzeThis.Generated.covid03162020).ImportFromStream(,streamYesterday,",", ,1,.rc)
+  //do ##class(AnalyzeThis.Generated.covid03162020).Import(,pfile,",", ,1,.rc) 
+
   write "imported records: "_rc 
   do ##class(%DeepSee.Utils).%BuildCube("covid03162020") 
   do ..ImportDays()
@@ -36,6 +43,9 @@ ClassMethod GetStreamFromRepo(fn As %String) As %CharacterStream
     set urlcsv="/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/"
     $$$TOE(sc,httprequest.Get(urlts_fn))
     Set stream = httprequest.HttpResponse.Data
+    
+    //Reset the HTTP connection, to allow for another connection and not throw a 404 error
+    Do httprequest.Reset()
 
     //TBD check for sc
     return stream
