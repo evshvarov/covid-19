@@ -14,8 +14,8 @@ ClassMethod ImportData() As %Status
   set pfile = "/opt/irisapp/files/covid-"_$tr($zd($h-1),"/","-")_".csv", rc=0 
   set pYesterdayFile=..#TSYesterdayFile_$tr($zd($h-1),"/","-")_".csv"
   
-  set streamYesterday=..GetStreamFromRepo(pYesterdayFile,1)
-  do ##class(AnalyzeThis.Generated.covid03162020).ImportFromStream(,streamYesterday,",", ,1,.rc)
+  set streamYesterday=..GetStreamFromRepo(pYesterdayFile)
+  do ##class(AnalyzeThis.Generated.covid03162020).ImportFromStream(streamYesterday,.rc)
   //do ##class(AnalyzeThis.Generated.covid03162020).Import(,pfile,",", ,1,.rc) 
 
   write "imported records: "_rc 

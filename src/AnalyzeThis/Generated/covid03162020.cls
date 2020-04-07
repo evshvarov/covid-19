@@ -31,6 +31,38 @@ Method LastUpdateSet(pVal) As %Status
  Quit $$$OK
 }
 
+ClassMethod ImportFromStream(stream As %CharacterStream, rc As %Integer) As %Status
+{
+	// loading days
+  // format=FIPS INTEGER, CITY VARCHAR(100), ProvinceState VARCHAR(100),CountryRegion VARCHAR(100),LastUpdate DATE,Confirmed INTEGER,Deaths INTEGER,Recovered INTEGER,Latitude VARCHAR(50),Longitude VARCHAR(50)"
+  set rc=0
+  set line=stream.ReadLine()  // skip header
+  while 'stream.AtEnd
+  {
+	set line=stream.ReadLine()
+   set place=..%New()
+   set place.FIPS=$p(line,",",1)
+   set place.City=$p(line,",",2)
+   set place.ProvinceState=$p(line,",",3)
+   set place.CountryRegion=$p(line,",",4)
+   //set day=$p($p(line,",",5)," ")
+   //set place.LastUpdate=$s(day["/":$zdh(day,1),1:$zdh(day,3))
+   set place.Latitude=$p(line,",",6)
+   set place.Longitude=$p(line,",",7)
+   set place.Confirmed=$p(line,",",8)
+   set place.Deaths=$p(line,",",9)
+   set place.Recovered=$p(line,",",10)
+   set status=place.%Save()
+
+   if $$$ISERR(status)
+  {
+   do $System.Status.DisplayError(status)
+  }
+  i $I(rc) 
+   
+  }
+}
+
 ClassMethod Import(pSelectMode As %Library.Integer = {$zu(115,5)}, pFileName As %Library.String(MAXLEN=""), pDelimiter As %String = ",", pQuote As %String = """", pHeaders As %Integer = 0, ByRef pRecordCount As %Integer) As %Library.Integer [ SqlProc ]
 {
 	set tStatementId = $SYSTEM.Util.CreateGUID(), tCounter = 0, pRecordCount = 0
