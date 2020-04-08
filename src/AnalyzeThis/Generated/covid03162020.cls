@@ -31,36 +31,88 @@ Method LastUpdateSet(pVal) As %Status
  Quit $$$OK
 }
 
-ClassMethod ImportFromStream(stream As %CharacterStream, rc As %Integer) As %Status
+ClassMethod ImportFromStream(pSelectMode As %Library.Integer = {$zu(115,5)}, streamConfirmed As %CharacterStream, pDelimiter As %String = ",", pQuote As %String = """", pHeaders As %Integer = 0, ByRef pRecordCount As %Integer) As %Library.Integer [ SqlProc ]
 {
-	// loading days
-  // format=FIPS INTEGER, CITY VARCHAR(100), ProvinceState VARCHAR(100),CountryRegion VARCHAR(100),LastUpdate DATE,Confirmed INTEGER,Deaths INTEGER,Recovered INTEGER,Latitude VARCHAR(50),Longitude VARCHAR(50)"
-  set rc=0
-  set line=stream.ReadLine()  // skip header
-  while 'stream.AtEnd
-  {
-	set line=stream.ReadLine()
-   set place=..%New()
-   set place.FIPS=$p(line,",",1)
-   set place.City=$p(line,",",2)
-   set place.ProvinceState=$p(line,",",3)
-   set place.CountryRegion=$p(line,",",4)
-   //set day=$p($p(line,",",5)," ")
-   //set place.LastUpdate=$s(day["/":$zdh(day,1),1:$zdh(day,3))
-   set place.Latitude=$p(line,",",6)
-   set place.Longitude=$p(line,",",7)
-   set place.Confirmed=$p(line,",",8)
-   set place.Deaths=$p(line,",",9)
-   set place.Recovered=$p(line,",",10)
-   set status=place.%Save()
+	set tStatementId = $SYSTEM.Util.CreateGUID(), tCounter = 0, pRecordCount = 0
+	do ..%DeleteExtent(,.tDeleted,.tInstances,1)
+		// burn the column headers
+	;for tPtr = 1:1:pHeaders { do tImporter.%Next() }
 
-   if $$$ISERR(status)
-  {
-   do $System.Status.DisplayError(status)
-  }
-  i $I(rc) 
-   
-  }
+	set line=streamConfirmed.ReadLine()
+	while 'streamConfirmed.AtEnd
+	{
+    set line=streamConfirmed.ReadLine()
+		set tMe = ..%New()
+		if 'pSelectMode {
+			If (line [ pQuote) {
+				for pQuoteIter=2:2:$L(line, pQuote) {
+					Set $P(line,pQuote,pQuoteIter)=$TR($P(line,pQuote,pQuoteIter),",",";")
+				}
+				set line =$TR(line,pQuote,"")
+			}
+
+			set tMe.FIPS = $TR($p(line,",",1),";",",") ;$p(line,",",1)
+			set tMe.City = $TR($p(line,",",2),";",",") ;$p(line,",",2)
+			set tMe.ProvinceState = $TR($p(line,",",3),";",",") ;$p(line,",",3)
+			set tMe.CountryRegion = $TR($p(line,",",4),";",",") ;$p(line,",",4)
+			set tMe.LastUpdate = $TR($p(line,",",5),";",",") ;$p(line,",",5)
+			set tMe.Latitude = $TR($p(line,",",6),";",",") ;$p(line,",",6)
+			set tMe.Longitude = $TR($p(line,",",7),";",",") ;$p(line,",",7)
+			set tMe.Confirmed = $TR($p(line,",",8),";",",")  ;$p(line,",",8)
+			set tMe.Deaths = $TR($p(line,",",9),";",",")  ;$p(line,",",9)
+			set tMe.Recovered = $TR($p(line,",",10),";",",")  ;$p(line,",",10)					
+		}
+		elseif pSelectMode = 1 {
+			If (line [ pQuote) {
+		    	If ($L(line,pQuote)>0) {
+		    		Set pStateCity=$P(line,pQuote,2)
+		    		Set pCity=$ZSTRIP($P(pStateCity,",",1),"<>W")
+		    		Set pState=$ZSTRIP($P(pStateCity,",",2),"<>W")
+		    		Set $P(line,",",1,2)=pState
+			    	}
+	    		}
+			set tMe.ProvinceState = $s('$system.CLS.IsMthd("ProvinceStateOdbcToLogical"):$p(line,",",1),1:tMe.ProvinceStateOdbcToLogical($p(line,",",1)))
+			set tMe.CountryRegion = $s('$system.CLS.IsMthd("CountryRegionOdbcToLogical"):$p(line,",",2),1:tMe.CountryRegionOdbcToLogical($p(line,",",2)))
+			set tMe.LastUpdate = $s('$system.CLS.IsMthd("LastUpdateOdbcToLogical"):$p(line,",",3),1:tMe.LastUpdateOdbcToLogical($p(line,",",3)))
+			set tMe.Confirmed = $s('$system.CLS.IsMthd("ConfirmedOdbcToLogical"):$p(line,",",4),1:tMe.ConfirmedOdbcToLogical($p(line,",",4)))
+			set tMe.Deaths = $s('$system.CLS.IsMthd("DeathsOdbcToLogical"):$p(line,",",5),1:tMe.DeathsOdbcToLogical($p(line,",",5)))
+			set tMe.Recovered = $s('$system.CLS.IsMthd("RecoveredOdbcToLogical"):$p(line,",",6),1:tMe.RecoveredOdbcToLogical($p(line,",",6)))
+			set tMe.Latitude = $s('$system.CLS.IsMthd("LatitudeOdbcToLogical"):$p(line,",",7),1:tMe.LatitudeOdbcToLogical($p(line,",",7)))
+			set tMe.Longitude = $s('$system.CLS.IsMthd("LongitudeOdbcToLogical"):$p(line,",",8),1:tMe.LongitudeOdbcToLogical($p(line,",",8)))
+			If (""'=pCity) {
+				set tMe.City = pCity
+			}
+		}
+		elseif pSelectMode = 2 {
+			If (line [ pQuote) {
+	    	
+		    	If ($L(line,pQuote)>0) {
+		    		Set pStateCity=$P(line,pQuote,2)
+		    		Set pCity=$ZSTRIP($P(pStateCity,",",1),"<>W")
+		    		Set pState=$ZSTRIP($P(pStateCity,",",2),"<>W")
+		    		Set $P(line,",",1,2)=pState
+			    	}
+	    		}
+			set tMe.ProvinceState = $s('$system.CLS.IsMthd("ProvinceStateDisplayToLogical"):$p(line,",",1),1:tMe.ProvinceStateDisplayToLogical($p(line,",",1)))
+			set tMe.CountryRegion = $s('$system.CLS.IsMthd("CountryRegionDisplayToLogical"):$p(line,",",2),1:tMe.CountryRegionDisplayToLogical($p(line,",",2)))
+			set tMe.LastUpdate = $s('$system.CLS.IsMthd("LastUpdateDisplayToLogical"):$p(line,",",3),1:tMe.LastUpdateDisplayToLogical($p(line,",",3)))
+			set tMe.Confirmed = $s('$system.CLS.IsMthd("ConfirmedDisplayToLogical"):$p(line,",",4),1:tMe.ConfirmedDisplayToLogical($p(line,",",4)))
+			set tMe.Deaths = $s('$system.CLS.IsMthd("DeathsDisplayToLogical"):$p(line,",",5),1:tMe.DeathsDisplayToLogical($p(line,",",5)))
+			set tMe.Recovered = $s('$system.CLS.IsMthd("RecoveredDisplayToLogical"):$p(line,",",6),1:tMe.RecoveredDisplayToLogical($p(line,",",6)))
+			set tMe.Latitude = $s('$system.CLS.IsMthd("LatitudeDisplayToLogical"):$p(line,",",7),1:tMe.LatitudeDisplayToLogical($p(line,",",7)))
+			set tMe.Longitude = $s('$system.CLS.IsMthd("LongitudeDisplayToLogical"):$p(line,",",8),1:tMe.LongitudeDisplayToLogical($p(line,",",8)))
+			If (""'=pCity) {
+				set tMe.City = pCity
+			}
+		}
+		set tStatus = tMe.%Save()
+		if $$$ISOK(tStatus) { set tCounter = tCounter + 1 }
+				
+   	}
+	set %sqlcontext.%SQLCODE = 0
+	set %sqlcontext.%ROWCOUNT = tCounter
+	set pRecordCount = tCounter
+	quit tCounter
 }
 
 ClassMethod Import(pSelectMode As %Library.Integer = {$zu(115,5)}, pFileName As %Library.String(MAXLEN=""), pDelimiter As %String = ",", pQuote As %String = """", pHeaders As %Integer = 0, ByRef pRecordCount As %Integer) As %Library.Integer [ SqlProc ]
