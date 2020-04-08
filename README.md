@@ -4,6 +4,7 @@ This is an [interactive dashboard](http://35.241.213.177:52773/dsw/index.html#!/
 
 Another dashboard [shows the timeline](http://35.241.213.177:52773/dsw/index.html#!/d/Covid19/Daily.dashboard?ns=IRISAPP):
 ![alt text](https://openexchange.intersystems.com/mp/img/packages/554/screenshots/tmpg10c7abe4bfzubrq8jserue4.png "Dashboard2")
+updates automatically from Internet
 
 
 ## data source
