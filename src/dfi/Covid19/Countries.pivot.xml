@@ -15,5 +15,8 @@
   </measure>
   <measure spec="[Measures].[Recovered]" key="" value="" text="Recovered" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="#,###" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
   </measure>
+  <measure spec="[MEASURES].[DEATH2CONFIRMED]" key="" value="" text="Death2Confirmed" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
+  </measure>
+  <calculatedMember dimension="MEASURES" memberName="Death2Confirmed" valueExpression="[Measures].[Deaths]/ [Measures].[Confirmed]" formatString="%#.##;;;;" solveOrder="0"></calculatedMember>
 </pivot>
 </Document></Export>
