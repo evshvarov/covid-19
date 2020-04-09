@@ -16,7 +16,6 @@ Index GuidIdx On Guid [ Unique ];
 ClassMethod ImportData() As %Status
 {
     d ..%KillExtent()
-
     &sql(
     insert into USA.Covid(RegionName, Guid, Confirmed, Deaths)
     select Name, Guid, Confirmed, Deaths from (SELECT 
