@@ -97,7 +97,7 @@ Highcharts.maps["custom/world-eckert3"] = {"title":"World, Eckert III projection
                     var data = [];
                     $.each(mapGeoJSON.features, function (index, feature) {
                         data.push({
-                            key: feature.properties['hc-key'],
+                            key: feature.properties['name'],
                             value: index
                         });
                     });

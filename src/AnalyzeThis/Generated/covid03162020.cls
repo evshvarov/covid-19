@@ -112,6 +112,13 @@ ClassMethod ImportFromStream(pSelectMode As %Library.Integer = {$zu(115,5)}, str
 	set %sqlcontext.%SQLCODE = 0
 	set %sqlcontext.%ROWCOUNT = tCounter
 	set pRecordCount = tCounter
+	
+	// change 'US'->'United States of America'
+	&sql(SELECT 
+ID, ProvinceState, CountryRegion, LastUpdate, Confirmed, Deaths, Recovered, Latitude, Longitude, City, FIPS
+FROM AnalyzeThis_Generated.covid03162020)
+
+
 	quit tCounter
 }
 
