@@ -23,7 +23,7 @@ ClassMethod ImportData() As %Status
 ProvinceState as name, Null as ParentName, sum(Confirmed) as Confirmed, sum(Deaths) as Deaths, reg.Guid, Null as ParentRegion
 FROM AnalyzeThis_Generated.covid03162020 cov
 LEFT OUTER JOIN USA.Region reg ON cov.ProvinceState = reg.Name AND reg.ParentRegion IS NULL
-Where CountryRegion='US'
+Where CountryRegion='United States of America'
 group by ProvinceState
 
 union
