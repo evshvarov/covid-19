@@ -6,17 +6,17 @@
 <Node><Sub>data</Sub>
 <Node><Sub>Confirmed</Sub>
 <Node><Sub>VALUE</Sub>
-<Data>Covid19/USA Map Confirmed.pivot</Data>
+<Data>Covid19/USA/ConfirmedOnMap.pivot</Data>
 </Node>
 </Node>
 <Node><Sub>Deaths</Sub>
 <Node><Sub>VALUE</Sub>
-<Data>Covid19/USA Map Deaths.pivot</Data>
+<Data>Covid19/USA/DeathsOnMap.pivot</Data>
 </Node>
 </Node>
 </Node>
 <Node><Sub>modDate</Sub>
-<Data>2020-04-09 11:29:15</Data>
+<Data>2020-04-09 16:52:13</Data>
 </Node>
 <Node><Sub>name</Sub>
 <Data>Covid19 USA</Data>
