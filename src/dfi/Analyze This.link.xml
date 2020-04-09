@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Export generator="Cache">
-<Document name="Analyze This.link.DFI">
-<link xmlns="http://www.intersystems.com/deepsee/library" name="Analyze This" folderName="" title="Analyze This" description="" keywords="" owner="" shared="true" public="true" locked="false" resource="" timeCreated="2020-03-17T23:27:45.764Z" createdBy="irisowner" category="" bookCover="{background: {style:&apos;background:white;&apos;,src:&apos;covers/AnalyzeThis_Cover.png&apos;},header: {text:&apos;$type&apos;,style:&apos;display: none;&apos;},title: {text:&apos;$title&apos;,style:&apos;display: none;&apos;},image: {style:&apos;display: none;&apos;,src:&apos;deepsee/ds2_globe_44.png&apos;,imageStyle:&apos;width:64px;height:64px;&apos;},subtitle: {style:&apos;display: none;&apos;},footer: {text:&apos;$owner&apos;,style:&apos;display: none;&apos;}}" href="/csp/irisapp/AnalyzeThis.UI.CSVImport.zen">
-</link>
-</Document></Export>

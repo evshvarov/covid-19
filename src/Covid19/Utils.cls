@@ -24,6 +24,13 @@ ClassMethod ImportData() As %Status
   do ##class(%DeepSee.Utils).%BuildCube("CovidDays")
 }
 
+ClassMethod BISetup() As %Status
+{
+  do ##class(USA.Utils).Setup()
+  do ##class(USA.Covid).ImportData()
+  do ##class(%DeepSee.Utils).%BuildCube("CovidCube")
+}
+
 ClassMethod ImportDays() As %Status
 {
     s streamConfirmed=..GetStreamFromRepo(..#TSConfirmed)

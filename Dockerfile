@@ -16,6 +16,7 @@ USER irisowner
 COPY  Installer.cls .
 COPY  src src
 COPY  data files
+COPY js /usr/irissys/csp/irisapp
 COPY irissession.sh /
 SHELL ["/irissession.sh"]
 
@@ -25,6 +26,7 @@ RUN \
   zn "IRISAPP" \
   zpm "install sslclient" \
   do ##class(Covid19.Utils).ImportData() \
+  do ##class(Covid19.Utils).BISetup() \
   zpm "install dsw" \
   zpm "install isc-dev" \
   do ##class(dev.code).workdir("/irisdev/app/src") \
