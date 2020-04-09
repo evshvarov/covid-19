@@ -195,6 +195,6 @@ Highcharts.maps["custom/world-eckert3"] = {"title":"World, Eckert III projection
     }
 
     angular.module('widgets')
-        .factory('DSW.WorldMap', ['BarChart', 'Utils', CustomChartWidgetFact]);
+        .factory('DSW.Addons.DSW.WorldMap', ['BarChart', 'Utils', CustomChartWidgetFact]);
 
 })();
