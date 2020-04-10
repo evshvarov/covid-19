@@ -10,4 +10,7 @@ spec:
   - protocol: TCP
     port: 52773
     targetPort: 52773
+  - protocol: TCP
+    port: 51773
+    targetPort: 51773
   type: LoadBalancer
