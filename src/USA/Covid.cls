@@ -35,11 +35,11 @@ SELECT
 ProvinceState as name, reg.Guid as guid
 FROM AnalyzeThis_Generated.covid03162020 cov2
 LEFT OUTER JOIN USA.Region reg ON cov2.ProvinceState = reg.Name AND reg.ParentRegion IS NULL
-Where CountryRegion='US'
+Where CountryRegion='United States of America'
 group by ProvinceState
 ) as state ON state.name =  cov.ProvinceState
 LEFT OUTER JOIN USA.Region county ON cov.City = county.Name AND county.parentregion = state.guid
-Where CountryRegion='US' )
+Where CountryRegion='United States of America' )
 where guid is not NULL
 Order by Name
 )
