@@ -49,7 +49,7 @@ terraform {
 }
 
 provider "google" {
-  project     = "development-257513"
+  project     = "zpm-package-manager"
   region      = "europe-west1"
 }
 
