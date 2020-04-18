@@ -105,7 +105,7 @@ ClassMethod ImportFromStream(pSelectMode As %Library.Integer = {$zu(115,5)}, str
 				set tMe.City = pCity
 			}
 		}
-		set tStatus = tMe.%Save()
+	 	s tStatus = tMe.%Save()
 		if $$$ISOK(tStatus) { set tCounter = tCounter + 1 }
 				
    	}

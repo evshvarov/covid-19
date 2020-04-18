@@ -43,7 +43,7 @@
 terraform {
   required_version = "~> 0.12"
   backend "gcs" {
-    bucket      = "covid19-analytics"
+    bucket      = "isc-covid19-analytics"
     prefix      = "terraform/state"
   }
 }
