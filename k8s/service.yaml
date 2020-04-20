@@ -7,7 +7,12 @@ spec:
   selector:
     app: covid19-analytics
   ports:
-  - protocol: TCP
+  - name: web
+    protocol: TCP
     port: 52773
     targetPort: 52773
+  - name: super
+    protocol: TCP
+    port: 51773
+    targetPort: 51773
   type: LoadBalancer
