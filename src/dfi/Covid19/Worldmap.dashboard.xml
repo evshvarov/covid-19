@@ -6,6 +6,7 @@
     <control name="" action="applyFilter" target="Widget3" targetProperty="" location="click" type="auto" controlClass="" label="" title="" value="" text="" readOnly="false" valueList="" displayList="" activeWhen="">
       <valueRequired>false</valueRequired>
     </control>
+    <property name="Data">[Country].[H1].[$name]</property>
   </widget>
   <widget name="Widget1" type="pivot" subtype="treeMapChart" subtypeClass="treeMapChart" title="" dataSource="Covid19/CountryConfirmed.pivot" dataLink="" drillDownDataSource="" width="200" height="200" sidebarContent="" showSidebar="false" sidebarWidth="" maximized="false" homeRowL="0" homeColL="6" colSpanL="4" rowSpanL="4" showToolbar="true" showToolbarBottomBorder="true" showToolbarOnlyWhenMaximized="false" colorToolbar="#F0F0F0" opacityToolbar="1" backgroundColor="#F0F0F0" opacity="1" theme="" dataColorList="">
     <control name="" action="applyFilter" target="Widget3" targetProperty="" location="click" type="auto" controlClass="" label="" title="" value="" text="" readOnly="false" valueList="" displayList="" activeWhen="">
@@ -14,6 +15,5 @@
   </widget>
   <widget name="Widget3" type="pivot" subtype="pivot" subtypeClass="lineChart" title="" dataSource="Covid19/Countries.pivot" dataLink="" drillDownDataSource="" width="200" height="200" sidebarContent="" showSidebar="false" sidebarWidth="" maximized="false" homeRowL="4" homeColL="6" colSpanL="4" rowSpanL="4" showToolbar="true" showToolbarBottomBorder="true" showToolbarOnlyWhenMaximized="false" colorToolbar="#F0F0F0" opacityToolbar="1" backgroundColor="#F0F0F0" opacity="1" theme="" dataColorList="">
   </widget>
-  
 </dashboard>
 </Document></Export>
