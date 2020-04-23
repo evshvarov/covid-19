@@ -10,7 +10,7 @@ XData KPI [ XMLNamespace = "http://www.intersystems.com/deepsee/kpi" ]
 xmlns="http://www.intersystems.com/deepsee/kpi"
  name="Covid19/World" sourceType="sql"
  sql="SELECT 
-CountryRegion, Sum(Confirmed) as confirmed,  Sum(Deaths) as deaths, Sum(Recovered) as recovered FROM AnalyzeThis_Generated.covid03162020 Group by CountryRegion"
+CountryRegion, Sum(Confirmed) as confirmed,  Sum(Deaths) as deaths, Sum(Recovered) as recovered FROM AnalyzeThis_Generated.covid03162020 Group by %EXACT(CountryRegion)"
  caption="KPI SQL">
 
 <property name="CountryRegion" columnNo="1"/>

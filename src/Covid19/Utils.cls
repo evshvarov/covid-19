@@ -28,6 +28,7 @@ ClassMethod BISetup() As %Status
 {
   do ##class(USA.Utils).Setup()
   do ##class(USA.Covid).ImportData()
+  do ##class(USA.Covid).GrantSQLAccess()
   do ##class(%DeepSee.Utils).%BuildCube("CovidCube")
 }
 

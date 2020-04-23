@@ -43,6 +43,13 @@ Where CountryRegion='United States of America' )
 where guid is not NULL
 Order by Name
 )
+    q $$$OK
+}
+
+ClassMethod GrantSQLAccess() As %Status
+{
+     &sql(GRANT SELECT,UPDATE ON AnalyzeThis_Generated.covid03162020 TO UnknownUser)
+     q $$$OK
 }
 
 Storage Default
