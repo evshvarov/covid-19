@@ -38,9 +38,7 @@ RUN \
   set webProperties("MatchRoles")=":%DB_IRISAPP" \
   set sc = ##class(Security.Applications).Modify(webName, .webProperties) \
   if sc<1 write $SYSTEM.OBJ.DisplayError(sc) \
-  zpm "install isc-apptools-lockdown" \
-  s sc=##class(App.Security.LockDown).addSQLPrivilege("IRISAPP", "1,AnalyzeThis_Generated.covid03162020", "s", "UnknownUser")
-
+  
 # bringing the standard shell back
 SHELL ["/bin/bash", "-c"]
 
