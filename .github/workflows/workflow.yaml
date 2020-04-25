@@ -1,9 +1,6 @@
 name: Build Covid19-analytics image, deploy it to GCR. Run GKE. Run Covid19-analytics in GKE
 
 on:
-  schedule:
-    # every midnight
-    - cron:  '0 0 * * *'
   push:
     branches:
       - master
