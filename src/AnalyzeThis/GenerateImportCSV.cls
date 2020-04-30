@@ -15,6 +15,7 @@ ClassMethod Run() As %Status
     s rowtype="ProvinceState VARCHAR(100),CountryRegion VARCHAR(100),LastUpdate DATE,Confirmed INTEGER,Deaths INTEGER,Recovered INTEGER,Latitude VARCHAR(50),Longitude VARCHAR(50)"
     s pclass="AnalyzeThis.Generated.covid03162020"
     do ##class(%SQL.Util.Procedures).CSVTOCLASS(, rowtype, pfile,",", ,1, pclass,,)
+    q $$$OK
 }
 
 ClassMethod Import() As %Status
@@ -23,6 +24,7 @@ ClassMethod Import() As %Status
     s rc=0
     do ##class(AnalyzeThis.Generated.covid03162020).Import(,pfile,",", ,1, rc)
     w rc
+    q $$$OK
 }
 
 }
