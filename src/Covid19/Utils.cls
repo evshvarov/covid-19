@@ -22,6 +22,7 @@ ClassMethod ImportData() As %Status
   do ##class(%DeepSee.Utils).%BuildCube("covid03162020") 
   do ..ImportDays()
   do ##class(%DeepSee.Utils).%BuildCube("CovidDays")
+  q $$$OK
 }
 
 ClassMethod BISetup() As %Status
@@ -30,6 +31,7 @@ ClassMethod BISetup() As %Status
   do ##class(USA.Covid).ImportData()
   do ##class(USA.Covid).GrantSQLAccess()
   do ##class(%DeepSee.Utils).%BuildCube("CovidCube")
+  q $$$OK
 }
 
 ClassMethod ImportDays() As %Status
@@ -37,6 +39,7 @@ ClassMethod ImportDays() As %Status
     s streamConfirmed=..GetStreamFromRepo(..#TSConfirmed)
     s streamDeaths=..GetStreamFromRepo(..#TSDeaths)
     d ..Import(streamConfirmed,streamDeaths)
+    q $$$OK
 }
 
 ClassMethod GetStreamFromRepo(fn As %String) As %CharacterStream
@@ -72,6 +75,7 @@ ClassMethod Import(streamConfirmed As %CharacterStream, streamDeaths As %Charact
 {
   // loading days
   // format=Province/State,Country/Region,Lat,Long,1/22/20,...
+  set status=$$$OK
   set line=streamConfirmed.ReadLine()
   set lineDeaths=streamDeaths.ReadLine()
   set day1h=$zdh("1/22/2020")  // day1 in horolog
@@ -109,6 +113,7 @@ ClassMethod Import(streamConfirmed As %CharacterStream, streamDeaths As %Charact
        if $$$ISERR(status) do $System.Status.DisplayError(status)
    }
   }
+  q status
 }
 
 }
