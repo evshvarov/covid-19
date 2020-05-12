@@ -1,8 +1,8 @@
 # Covid-19 analytics
-This is an [interactive dashboard](http://35.241.213.177:52773/dsw/index.html#!/d/Covid19/Countries.dashboard?ns=IRISAPP) on the analytics for covid-19 pandemia.
+This is an [interactive dashboard](http://34.77.54.254/:52773/dsw/index.html#!/d/Covid19/Countries.dashboard?ns=IRISAPP) on the analytics for covid-19 pandemia.
 ![alt text](https://openexchange.intersystems.com/mp/img/packages/512/screenshots/m5qo04fsyhieyjzmgkmjzborr8.png "Dashboard1")
 
-Another dashboard [shows the timeline](http://35.241.213.177:52773/dsw/index.html#!/d/Covid19/Daily.dashboard?ns=IRISAPP):
+Another dashboard [shows the timeline](http://34.77.54.254/:52773/dsw/index.html#!/d/Covid19/Daily.dashboard?ns=IRISAPP):
 ![alt text](https://openexchange.intersystems.com/mp/img/packages/554/screenshots/tmpg10c7abe4bfzubrq8jserue4.png "Dashboard2")
 updates automatically from Internet
 
