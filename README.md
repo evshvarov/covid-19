@@ -9,7 +9,7 @@ updates automatically from Internet
 
 ## data source
 The data is taken from [Johns Hopkins repo](https://github.com/CSSEGISandData/COVID-19)
-Update 16 of May
+Update 18 of May
 
 ## How it works
 The dashboard is running on InterSystems IRIS 2019.4 Community Edition
