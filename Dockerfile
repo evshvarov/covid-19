@@ -28,6 +28,7 @@ RUN \
   zpm "install sslclient" \
   do ##class(Covid19.Utils).ImportData() \
   do ##class(Covid19.Utils).BISetup() \
+  do ##class(Covid19.Utils).CreateTask() \
   zpm "install dsw" \
   zpm "install isc-dev" \
   do ##class(dev.code).workdir("/irisdev/app/src") \

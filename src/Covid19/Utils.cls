@@ -9,6 +9,16 @@ Parameter TSrecovered = "csse_covid_19_time_series/time_series_covid19_recovered
 
 Parameter TSYesterdayFile = "csse_covid_19_daily_reports/";
 
+ClassMethod DailyUpdate() As %Status
+{
+  set sc=..ImportData()
+  if $$$ISERR(sc) Quit sc
+  set sc=##class(USA.Covid).ImportData()
+  if $$$ISERR(sc) Quit sc
+  set sc=##class(%DeepSee.Utils).%BuildCube("CovidCube")
+  quit sc
+}
+
 ClassMethod ImportData() As %Status
 {
   set pfile = "/opt/irisapp/files/covid-"_$tr($zd($h-1),"/","-")_".csv", rc=0 
@@ -114,6 +124,29 @@ ClassMethod Import(streamConfirmed As %CharacterStream, streamDeaths As %Charact
    }
   }
   q status
+}
+
+ClassMethod CreateTask() As %Status
+{
+	Set task=##class(%SYS.Task).%New()
+	Set task.Name = "Update data"
+	Set task.NameSpace=$Namespace
+	Set task.TimePeriod=0 // Daily
+	Set task.TimePeriodEvery=1 // Every 1 day
+	Set task.DailyFrequency=1 // Run Several times in a day
+	Set task.DailyFrequencyTime=0 // Run every x minutes
+	Set task.DailyIncrement=60 // # of minutes between runs
+	Set task.DailyStartTime = 0 // Start at 00:00:00
+	Set task.DailyEndTime = 86399 // End at 23:59:59
+	Set task.StartDate = $p($H,",",1) // Start today
+	
+	Set taskdef = ##class(Covid19.UpdateTask).%New()
+	Do task.AssignSettings(taskdef)
+	Set task.TaskClass=$classname(taskdef)
+	
+	Set st = task.%Save()
+	Return:$$$ISERR(st) st
+	Return ##class(%SYS.Task).RunNow(task.%Id())
 }
 
 }
