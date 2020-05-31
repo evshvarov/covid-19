@@ -86,6 +86,7 @@ ClassMethod Import(streamConfirmed As %CharacterStream, streamDeaths As %Charact
   // loading days
   // format=Province/State,Country/Region,Lat,Long,1/22/20,...
   set status=$$$OK
+  do ##class(Day).%KillExtent()
   set line=streamConfirmed.ReadLine()
   set lineDeaths=streamDeaths.ReadLine()
   set day1h=$zdh("1/22/2020")  // day1 in horolog
