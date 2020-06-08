@@ -17,6 +17,7 @@ USER irisowner
 COPY  Installer.cls .
 COPY  src src
 COPY  data files
+COPY sql sql
 COPY js /usr/irissys/csp/irisapp
 COPY irissession.sh /
 SHELL ["/irissession.sh"]
@@ -29,6 +30,7 @@ RUN \
   do ##class(Covid19.Utils).ImportData() \
   do ##class(Covid19.Utils).BISetup() \
   do ##class(Covid19.Utils).CreateTask() \
+  do ##class(User.Utils).Setup() \
   zpm "install dsw" \
   zpm "install isc-dev" \
   do ##class(dev.code).workdir("/irisdev/app/src") \
@@ -46,6 +48,7 @@ SHELL ["/bin/bash", "-c"]
 
 COPY /dsw/irisapp.json /usr/irissys/csp/dsw/configs/
 COPY /dsw/DSW.WorldMap.js /usr/irissys/csp/dsw/addons/
+COPY /dsw/DSW.HeatmapChart.js /usr/irissys/csp/dsw/addons/
 # USER root
 # RUN chmod 777 /usr/irissys/csp/dsw/addons/worldmap.js
 # USER irisowner
