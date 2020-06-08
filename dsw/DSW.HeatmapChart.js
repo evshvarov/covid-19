@@ -371,6 +371,6 @@
     }
 
     angular.module('widgets')
-        .factory('DSW.Addons.heatmapChart', ['BaseChart', 'Utils', HeatmapChartFact]);
+        .factory('DSW.Addons.HeatmapChart', ['BaseChart', 'Utils', HeatmapChartFact]);
 
 })();
