@@ -4,7 +4,7 @@
     /**
      * Example Data property
      *
-     * {"padding": 1, "borderColor": "#FFFFFF", "minColor": "rgba(0,0,255,0.51)", "maxColor": "rgba(82,255,28,0.6)", "stops": [["", "#000000"], [2, "#00FF00"], [14, "#0000FF"], [15, "#FF0000"]]}
+     * {"padding": 1, "borderColor": "#FFFFFF", "minColor": "rgba(0,0,255,0.51)", "maxColor": "rgba(82,255,28,0.6)", "stops": [["", "#000000", "Empty"], [2, "#00FF00", "Category 1"], [14, "#0000FF"], [15, "#FF0000"]]}
      *
      */
 
@@ -266,13 +266,17 @@
                 }
             }
 
+            // Highcharts.seriesTypes.heatmap.prototype.axisTypes =  ['xAxis', 'yAxis'],
+            // Highcharts.seriesTypes.heatmap.prototype.optionalAxis =  null;
+
             this.setType('heatmap');
             var ex = {
                 legend: {
-                    enabled: false
+                    enabled: true
                 },
                 plotOptions: {
                     heatmap: {
+                        allowPointSelect: false,
                         borderWidth: padding,
                         borderColor: borderColor,
                         dataLabels: {
@@ -289,7 +293,8 @@
                 },
                 colorAxis: {
                     minColor: minColor,
-                    maxColor: maxColor
+                    maxColor: maxColor,
+                    dataClasses: stops.map(s => ({from:s[0], to: s[0], color: s[1], name: s[2] || s[0] || 'No value'}))
                 }
             };
 
