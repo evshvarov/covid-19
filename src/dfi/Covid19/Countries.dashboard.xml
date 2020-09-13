@@ -18,8 +18,5 @@
       <valueRequired>true</valueRequired>
     </control>
   </widget>
-  <widget name="Widget6" type="portlet" subtype="DSW.Addons.htmlViewer" subtypeClass="" title="" dataSource="Covid19/Figures.pivot" dataLink="" drillDownDataSource="" width="200" height="200" sidebarContent="" showSidebar="false" sidebarWidth="" maximized="false" homeRowL="2" homeColL="8" colSpanL="2" rowSpanL="2" showToolbar="true" showToolbarBottomBorder="true" showToolbarOnlyWhenMaximized="false" colorToolbar="#F0F0F0" opacityToolbar="1" backgroundColor="#F0F0F0" opacity="1" theme="" dataColorList="">
-    <property name="Data">https://codepen.io/evshvarov/live/PoqBEdm</property>
-  </widget>
 </dashboard>
 </Document></Export>

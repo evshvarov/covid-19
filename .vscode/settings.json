@@ -2,15 +2,19 @@
     "files.associations": {
     
         "Dockerfile*": "dockerfile",
+        "*.script":"objectscript"
       },
     "objectscript.conn" :{
+      "username": "_SYSTEM",
+      "password": "SYS",
       "ns": "IRISAPP",
       "active": true,
       "docker-compose": {
         "service": "iris",
         "internalPort": 52773
+      },"links": {
+        "COVID-19 Analytics": "http://localhost:${port}/dsw/index.html#!/?ns=IRISAPP",
+        "Architect": "http://localhost:${port}/csp/irisapp/_DeepSee.UI.Architect.zen?$NAMESPACE=IRISAPP"
       }
-    },
-    "objectscript.conn.active": true
-
+    }
 }

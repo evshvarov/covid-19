@@ -12,5 +12,10 @@ docker-compose exec iris iris session iris -U IRISAPP
 d ##class(dev.code).export("*.DFI")
 ```
 
+## import countries
+```
+d ##class(community.csvgen).GenerateFromURL("https://raw.githubusercontent.com/datasciencedojo/datasets/master/WorldDBTables/CountryTable.csv",",","Covid19.Countries")
+```
+
 
 

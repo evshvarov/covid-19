@@ -23,6 +23,8 @@ Property FIPS As %Integer;
 
 Property City As %String(MAXLEN = "");
 
+Property Population As %Integer;
+
 Method LastUpdateSet(pVal) As %Status
 {
  Try { Set pVal=+$zdth(pVal,3) }
@@ -216,6 +218,9 @@ Storage Default
 </Value>
 <Value name="11">
 <Value>City</Value>
+</Value>
+<Value name="12">
+<Value>Population</Value>
 </Value>
 </Data>
 <DataLocation>^AnalyzeThis.G.covid03162020D</DataLocation>

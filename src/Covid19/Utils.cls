@@ -9,6 +9,34 @@ Parameter TSrecovered = "csse_covid_19_time_series/time_series_covid19_recovered
 
 Parameter TSYesterdayFile = "csse_covid_19_daily_reports/";
 
+ClassMethod ImportCountries()
+{
+  zw ##class(community.csvgen).GenerateFromURL("https://raw.githubusercontent.com/datasciencedojo/datasets/master/WorldDBTables/CountryTable.csv",",","Covid19.Countries")
+}
+
+ClassMethod CleanCountriesData()
+{
+  &sql(Update Covid19.Countries
+Set name='Russia'
+where name='Russian Federation')
+
+
+  &sql(Update Covid19.Countries
+Set name='United States of America'
+where name='united States')
+}
+
+ClassMethod UpdatePopulation()
+{
+  &sql(
+  Update AnalyzeThis_Generated.covid03162020 as t1
+  SET t1.Population=t2.Population
+  FROM AnalyzeThis_Generated.covid03162020 as t1 
+  Inner Join Covid19.Countries as t2 on t1.CountryRegion=t2.name
+
+  )
+}
+
 ClassMethod DailyUpdate() As %Status
 {
   set sc=..ImportData()
@@ -29,6 +57,9 @@ ClassMethod ImportData() As %Status
   //do ##class(AnalyzeThis.Generated.covid03162020).Import(,pfile,",", ,1,.rc) 
 
   write "imported records: "_rc 
+  do ..ImportCountries()
+  do ..CleanCountriesData()
+  do ..UpdatePopulation()
   do ##class(%DeepSee.Utils).%BuildCube("covid03162020") 
   do ..ImportDays()
   do ##class(%DeepSee.Utils).%BuildCube("CovidDays")

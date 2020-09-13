@@ -9,6 +9,8 @@ XData Cube [ XMLNamespace = "http://www.intersystems.com/deepsee" ]
   <dimension name="CountryRegion" disabled="false" hasAll="true" type="data" hidden="false" showHierarchies="default">
     <hierarchy name="H1" disabled="false" hidden="false">
       <level name="CountryRegion" disabled="false" sourceProperty="CountryRegion" list="false" useDisplayValue="false" useAsFilter="true" hidden="false" factNumber="2">
+        <property name="Population" disabled="false" sourceProperty="Population" hidden="false" isName="false" isDescription="false" isReference="false" useDisplayValue="false">
+        </property>
       </level>
       <level name="ProvinceState" disabled="false" sourceProperty="ProvinceState" list="false" useDisplayValue="true" useAsFilter="true" hidden="false" factNumber="3">
       </level>
