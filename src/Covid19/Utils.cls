@@ -181,4 +181,17 @@ ClassMethod CreateTask() As %Status
 	Return ##class(%SYS.Task).RunNow(task.%Id())
 }
 
+ClassMethod OpenToPublic()
+{
+  n $namespace
+  s $namespace="%SYS"
+  write "Modify MDX2JSON application security...",! 
+  set webName = "/mdx2json" 
+  set webProperties("AutheEnabled") = 64 
+  set webProperties("MatchRoles")=":%DB_IRISAPP" 
+  set sc = ##class(Security.Applications).Modify(webName, .webProperties) 
+  if 'sc zw sc
+  $$$ThrowOnError(sc)
+}
+
 }

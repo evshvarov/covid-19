@@ -1,4 +1,5 @@
-
+zn "%SYS" 
+Do ##class(Security.Users).UnExpireUserPasswords("*")
 do $SYSTEM.OBJ.Load("/opt/irisapp/Installer.cls", "ck")
 set sc = ##class(App.Installer).setup() 
 zn "IRISAPP" 
@@ -12,13 +13,5 @@ zpm "install dsw 2.1.51"
 zpm "install isc-dev" 
 do ##class(dev.code).workdir("/irisdev/app/src") 
 do EnableDeepSee^%SYS.cspServer("/csp/irisapp/") 
-zn "%SYS" 
-Do ##class(Security.Users).UnExpireUserPasswords("*")
-write "Modify MDX2JSON application security...",! 
-set webName = "/mdx2json" 
-set webProperties("AutheEnabled") = 64 
-set webProperties("MatchRoles")=":%DB_IRISAPP" 
-set sc = ##class(Security.Applications).Modify(webName, .webProperties) 
-if sc<1 write $SYSTEM.OBJ.DisplayError(sc) 
-
+do ##class(Covid19.Utils).OpenToPublic()
 halt
