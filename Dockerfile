@@ -23,7 +23,8 @@ COPY js /usr/irissys/csp/irisapp
 COPY iris.script /tmp/iris.script
 
 RUN iris start IRIS \
-	&& iris session IRIS < /tmp/iris.script
+	&& iris session IRIS < /tmp/iris.script \
+  && iris stop IRIS quietly
 
 COPY /dsw/irisapp.json /usr/irissys/csp/dsw/configs/
 COPY /dsw/DSW.WorldMap.js /usr/irissys/csp/dsw/addons/
