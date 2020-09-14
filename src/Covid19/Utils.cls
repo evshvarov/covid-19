@@ -19,11 +19,13 @@ ClassMethod CleanCountriesData()
   &sql(Update Covid19.Countries
 Set name='Russia'
 where name='Russian Federation')
+  if SQLCODE < 0 throw ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,"Change Russia")
 
 
   &sql(Update Covid19.Countries
 Set name='United States of America'
 where name='united States')
+  if SQLCODE < 0 throw ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,"Change the USA")
 }
 
 ClassMethod UpdatePopulation()
@@ -32,24 +34,23 @@ ClassMethod UpdatePopulation()
   Update AnalyzeThis_Generated.covid03162020 as t1
   SET t1.Population=t2.Population
   FROM AnalyzeThis_Generated.covid03162020 as t1 
-  Inner Join Covid19.Countries as t2 on t1.CountryRegion=t2.name
-
-  )
+  Inner Join Covid19.Countries as t2 on t1.CountryRegion=t2.name)
+  if SQLCODE < 0 throw ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,"Add Population")
 }
 
 ClassMethod DailyUpdate() As %Status
 {
   set sc=..ImportData()
-  if $$$ISERR(sc) Quit sc
+  if $$$ISERR(sc) return sc
   set sc=##class(USA.Covid).ImportData()
-  if $$$ISERR(sc) Quit sc
+  if $$$ISERR(sc) return sc
   set sc=##class(%DeepSee.Utils).%BuildCube("CovidCube")
-  quit sc
+  return sc
 }
 
 ClassMethod ImportData() As %Status
 {
-  set pfile = "/opt/irisapp/files/covid-"_$tr($zd($h-1),"/","-")_".csv", rc=0 
+  set rc=0 
   set pYesterdayFile=..#TSYesterdayFile_$tr($zd($h-1),"/","-")_".csv"
   
   set streamYesterday=..GetStreamFromRepo(pYesterdayFile)
@@ -63,7 +64,7 @@ ClassMethod ImportData() As %Status
   do ##class(%DeepSee.Utils).%BuildCube("covid03162020") 
   do ..ImportDays()
   do ##class(%DeepSee.Utils).%BuildCube("CovidDays")
-  q $$$OK
+  return $$$OK
 }
 
 ClassMethod BISetup() As %Status
@@ -72,7 +73,7 @@ ClassMethod BISetup() As %Status
   do ##class(USA.Covid).ImportData()
   do ##class(USA.Covid).GrantSQLAccess()
   do ##class(%DeepSee.Utils).%BuildCube("CovidCube")
-  q $$$OK
+  return $$$OK
 }
 
 ClassMethod ImportDays() As %Status
@@ -80,7 +81,7 @@ ClassMethod ImportDays() As %Status
     s streamConfirmed=..GetStreamFromRepo(..#TSConfirmed)
     s streamDeaths=..GetStreamFromRepo(..#TSDeaths)
     d ..Import(streamConfirmed,streamDeaths)
-    q $$$OK
+    return $$$OK
 }
 
 ClassMethod GetStreamFromRepo(fn As %String) As %CharacterStream
@@ -92,7 +93,6 @@ ClassMethod GetStreamFromRepo(fn As %String) As %CharacterStream
     Set httprequest.Https = 1
     Set httprequest.SSLConfiguration = "default"
     set urlts="/CSSEGISandData/COVID-19/master/csse_covid_19_data/"
-    set urlcsv="/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/"
     $$$TOE(sc,httprequest.Get(urlts_fn))
     Set stream = httprequest.HttpResponse.Data
     
@@ -150,12 +150,13 @@ ClassMethod Import(streamConfirmed As %CharacterStream, streamDeaths As %Charact
        set day.DeathsNew=day.Deaths-DeathsPrev
        
        set status=day.%Save()
+       if $$$ISERR(status) do $System.Status.DisplayError(status)
        set ConfirmedPrev=day.Confirmed
        set DeathsPrev=day.Deaths
-       if $$$ISERR(status) do $System.Status.DisplayError(status)
+       
    }
   }
-  q status
+  return status
 }
 
 ClassMethod CreateTask() As %Status
