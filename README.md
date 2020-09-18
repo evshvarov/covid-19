@@ -17,7 +17,6 @@ Also the [bubble chart of top 10 countries](http://34.77.54.254:52773/dsw/index.
 
 ## data source
 The data is taken from [Johns Hopkins repo](https://github.com/CSSEGISandData/COVID-19)
-Update 27 of May
 
 ## How it works
 The dashboard is running on InterSystems IRIS 2019.4 Community Edition
