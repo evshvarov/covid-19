@@ -1,15 +1,14 @@
 # Covid-19 analytics
 This is an [interactive dashboard](http://34.77.54.254:52773/dsw/index.html#/IRISAPP/Covid19/Countries.dashboard    ) on the analytics for covid-19 pandemia.
-![alt text](https://user-images.githubusercontent.com/2781759/93055568-d8f79e80-f673-11ea-9b29-36d286356376.png "Dashboard1")
-
+<img width="1420" alt="Screenshot 2020-09-29 at 14 02 39" src="https://user-images.githubusercontent.com/2781759/94550638-bad99300-025c-11eb-8cd5-83a22266c991.png">
 Another dashboard [shows the timeline](http://34.77.54.254:52773/dsw/index.html#/IRISAPP/Covid19/Daily.dashboard):
 <img width="1436" alt="Screenshot 2020-09-18 at 10 59 13" src="https://user-images.githubusercontent.com/2781759/93572101-0909af00-f99e-11ea-8cdb-19a47baffcab.png">
 
 There is also [USA Interactive map](http://34.77.54.254:52773/dsw/index.html#/IRISAPP/Covid19/USA.dashboard)
-<img width="1197" alt="Screenshot 2020-09-18 at 11 01 16" src="https://user-images.githubusercontent.com/2781759/93572277-4cfcb400-f99e-11ea-9a85-1e245b8b2c39.png">
+<img width="1419" alt="Screenshot 2020-09-29 at 14 05 59" src="https://user-images.githubusercontent.com/2781759/94550750-f07e7c00-025c-11eb-8531-cbd48928a525.png">
 
 And the [World Map](http://34.77.54.254:52773/dsw/index.html#/IRISAPP/Covid19/Worldmap.dashboard)
-<img width="1429" alt="Screenshot 2020-09-18 at 11 03 15" src="https://user-images.githubusercontent.com/2781759/93572503-9b11b780-f99e-11ea-8f2e-5e56c1e973d2.png">
+<img width="1426" alt="Screenshot 2020-09-29 at 13 59 11" src="https://user-images.githubusercontent.com/2781759/94550649-c200a100-025c-11eb-9817-cf07818bbb3f.png">
 
 Also the [bubble chart of top 10 countries](http://34.77.54.254:52773/dsw/index.html#/IRISAPP/Covid19/bubble%20chart.dashboard)
 <img width="1198" alt="Screenshot 2020-09-18 at 11 05 28" src="https://user-images.githubusercontent.com/2781759/93572744-f2178c80-f99e-11ea-93e2-6eda2e31d212.png">
