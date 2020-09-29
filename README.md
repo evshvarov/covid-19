@@ -1,15 +1,22 @@
 # Covid-19 analytics
-This is an [interactive dashboard](http://34.77.54.254/:52773/dsw/index.html#!/d/Covid19/Countries.dashboard?ns=IRISAPP) on the analytics for covid-19 pandemia.
-![alt text](https://openexchange.intersystems.com/mp/img/packages/512/screenshots/m5qo04fsyhieyjzmgkmjzborr8.png "Dashboard1")
+This is an [interactive dashboard](http://34.77.54.254:52773/dsw/index.html#!/d/Covid19/Countries.dashboard?ns=IRISAPP) on the analytics for covid-19 pandemia.
+![alt text](https://user-images.githubusercontent.com/2781759/93055568-d8f79e80-f673-11ea-9b29-36d286356376.png "Dashboard1")
 
-Another dashboard [shows the timeline](http://34.77.54.254/:52773/dsw/index.html#!/d/Covid19/Daily.dashboard?ns=IRISAPP):
-![alt text](https://openexchange.intersystems.com/mp/img/packages/554/screenshots/tmpg10c7abe4bfzubrq8jserue4.png "Dashboard2")
-updates automatically from Internet
+Another dashboard [shows the timeline](http://34.77.54.254:52773/dsw/index.html#!/d/Covid19/Daily.dashboard?ns=IRISAPP):
+<img width="1436" alt="Screenshot 2020-09-18 at 10 59 13" src="https://user-images.githubusercontent.com/2781759/93572101-0909af00-f99e-11ea-8cdb-19a47baffcab.png">
+
+There is also [USA Interactive map](http://34.77.54.254:52773/dsw/index.html#!/d/Covid19/USA.dashboard?ns=IRISAPP)
+<img width="1197" alt="Screenshot 2020-09-18 at 11 01 16" src="https://user-images.githubusercontent.com/2781759/93572277-4cfcb400-f99e-11ea-9a85-1e245b8b2c39.png">
+
+And the [World Map](http://34.77.54.254:52773/dsw/index.html#!/d/Covid19/Worldmap.dashboard?ns=IRISAPP)
+<img width="1429" alt="Screenshot 2020-09-18 at 11 03 15" src="https://user-images.githubusercontent.com/2781759/93572503-9b11b780-f99e-11ea-8f2e-5e56c1e973d2.png">
+
+Also the [bubble chart of top 10 countries](http://34.77.54.254:52773/dsw/index.html#!/d/Covid19/bubble%20chart.dashboard?ns=IRISAPP)
+<img width="1198" alt="Screenshot 2020-09-18 at 11 05 28" src="https://user-images.githubusercontent.com/2781759/93572744-f2178c80-f99e-11ea-93e2-6eda2e31d212.png">
 
 
 ## data source
 The data is taken from [Johns Hopkins repo](https://github.com/CSSEGISandData/COVID-19)
-Update 27 of May
 
 ## How it works
 The dashboard is running on InterSystems IRIS 2019.4 Community Edition
