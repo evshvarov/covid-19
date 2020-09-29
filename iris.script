@@ -9,7 +9,7 @@ do ##class(Covid19.Utils).ImportData()
 do ##class(Covid19.Utils).BISetup() 
 do ##class(Covid19.Utils).CreateTask() 
 do ##class(User.Utils).Setup()
-zpm "install dsw 2.1.51" 
+zpm "install dsw" 
 zpm "install isc-dev" 
 do ##class(dev.code).workdir("/irisdev/app/src") 
 do EnableDeepSee^%SYS.cspServer("/csp/irisapp/") 
