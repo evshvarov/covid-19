@@ -18,7 +18,7 @@ Also the [bubble chart of top 10 countries](http://34.77.54.254:52773/dsw/index.
 The data is taken from [Johns Hopkins repo](https://github.com/CSSEGISandData/COVID-19)
 
 ## How it works
-The dashboard is running on InterSystems IRIS 2019.4 Community Edition
+The dashboard is running on InterSystems IRIS 2020.4 Community Edition
 It uses IRIS Analytics module and DSW as a representation layer
 It runs in a Kubernetes cluster in GCP
 
