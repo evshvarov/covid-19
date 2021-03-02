@@ -3,7 +3,7 @@ name: Build Covid19-analytics image, deploy it to GCR. Run GKE. Run Covid19-anal
 on:
   push:
     branches:
-      - master
+      - pause
     
 
 # Environment variables.
