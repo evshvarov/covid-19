@@ -1,4 +1,5 @@
 # Covid-19 analytics
+Try with http://covid-19.demo.community.intersystems.com/dsw/index.html#!/IRISAPP
 This is an [interactive dashboard](http://34.77.54.254:52773/dsw/index.html#/IRISAPP/Covid19/Countries.dashboard    ) on the analytics for covid-19 pandemia.
 <img width="1420" alt="Screenshot 2020-09-29 at 14 02 39" src="https://user-images.githubusercontent.com/2781759/94550638-bad99300-025c-11eb-8cd5-83a22266c991.png">
 Another dashboard [shows the timeline](http://34.77.54.254:52773/dsw/index.html#/IRISAPP/Covid19/Daily.dashboard):
