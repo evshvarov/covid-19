@@ -12,8 +12,8 @@ env:
   DOMAIN_NAME:  covid-19.demo.community.intersystems.com
 
   # Leave this section untouched
-  PROJECT_ID:   hackathon-297608
-  CLUSTER_NAME: contest
+  PROJECT_ID:   iris-community-demos
+  CLUSTER_NAME: demo
   GITHUB_SHA:   ${{ github.sha }}
   GCR_LOCATION: eu.gcr.io
   REGION:       europe-west2
