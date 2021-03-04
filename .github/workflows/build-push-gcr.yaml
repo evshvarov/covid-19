@@ -17,7 +17,7 @@ env:
   GITHUB_SHA:   ${{ github.sha }}
   GCR_LOCATION: eu.gcr.io
   REGION:       europe-west2
-  NAMESPACE:    contest
+  NAMESPACE:    demo
 
 jobs:
   deploy-cloud-run:
