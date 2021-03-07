@@ -28,8 +28,8 @@ RUN iris start IRIS \
   && iris stop IRIS quietly
 
 COPY /dsw/irisapp.json /usr/irissys/csp/dsw/configs/
-COPY /dsw/DSW.WorldMap.js /usr/irissys/csp/dsw/addons/
-COPY /dsw/heatmapChart.js /usr/irissys/csp/dsw/addons/
+#COPY /dsw/DSW.WorldMap.js /usr/irissys/csp/dsw/addons/
+#COPY /dsw/heatmapChart.js /usr/irissys/csp/dsw/addons/
 # USER root
 # RUN chmod 777 /usr/irissys/csp/dsw/addons/worldmap.js
 # USER irisowner
