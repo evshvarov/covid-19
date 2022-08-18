@@ -37,12 +37,12 @@ jobs:
       run: gcloud auth configure-docker
 
     - name: Build image
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          push: false
-          load: true
-          tags: ${GCR_LOCATION}/${PROJECT_ID}/${IMAGE_NAME}:${{ github.sha }}
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        push: false
+        load: true
+        tags: ${GCR_LOCATION}/${PROJECT_ID}/${IMAGE_NAME}:${{ github.sha }}
 
     - name: Build Push image
       run: |
