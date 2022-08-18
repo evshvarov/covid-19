@@ -1,17 +1,17 @@
 # Covid-19 analytics
-Try with http://covid-19.demo.community.intersystems.com/dsw/index.html#!/IRISAPP
-This is an [interactive dashboard](http://34.77.54.254:52773/dsw/index.html#/IRISAPP/Covid19/Countries.dashboard    ) on the analytics for covid-19 pandemia.
+Try with http://covid-19.demo.community.intersystems.com/dsw/index.html#!/USER
+This is an [interactive dashboard](http://34.77.54.254:52773/dsw/index.html#/USER/Covid19/Countries.dashboard    ) on the analytics for covid-19 pandemia.
 <img width="1420" alt="Screenshot 2020-09-29 at 14 02 39" src="https://user-images.githubusercontent.com/2781759/94550638-bad99300-025c-11eb-8cd5-83a22266c991.png">
-Another dashboard [shows the timeline](http://34.77.54.254:52773/dsw/index.html#/IRISAPP/Covid19/Daily.dashboard):
+Another dashboard [shows the timeline](http://34.77.54.254:52773/dsw/index.html#/USER/Covid19/Daily.dashboard):
 <img width="1436" alt="Screenshot 2020-09-18 at 10 59 13" src="https://user-images.githubusercontent.com/2781759/93572101-0909af00-f99e-11ea-8cdb-19a47baffcab.png">
 
-There is also [USA Interactive map](http://34.77.54.254:52773/dsw/index.html#/IRISAPP/Covid19/USA.dashboard)
+There is also [USA Interactive map](http://34.77.54.254:52773/dsw/index.html#/USER/Covid19/USA.dashboard)
 <img width="1419" alt="Screenshot 2020-09-29 at 14 05 59" src="https://user-images.githubusercontent.com/2781759/94550750-f07e7c00-025c-11eb-8531-cbd48928a525.png">
 
-And the [World Map](http://34.77.54.254:52773/dsw/index.html#/IRISAPP/Covid19/Worldmap.dashboard)
+And the [World Map](http://34.77.54.254:52773/dsw/index.html#/USER/Covid19/Worldmap.dashboard)
 <img width="1426" alt="Screenshot 2020-09-29 at 13 59 11" src="https://user-images.githubusercontent.com/2781759/94550649-c200a100-025c-11eb-9817-cf07818bbb3f.png">
 
-Also the [bubble chart of top 10 countries](http://34.77.54.254:52773/dsw/index.html#/IRISAPP/Covid19/bubble%20chart.dashboard)
+Also the [bubble chart of top 10 countries](http://34.77.54.254:52773/dsw/index.html#/USER/Covid19/bubble%20chart.dashboard)
 <img width="1198" alt="Screenshot 2020-09-18 at 11 05 28" src="https://user-images.githubusercontent.com/2781759/93572744-f2178c80-f99e-11ea-93e2-6eda2e31d212.png">
 
 
@@ -31,7 +31,7 @@ Pivots and Dashboards were built manually using [InterSystems IRIS Analytics](ht
 
 To export Pivot and Dashboard changes do:
 ```
-IRISAPP> do ##class(dev.code).export("*.DFI")
+USER> do ##class(dev.code).export("*.DFI")
 ```
 This will export pivots and dashboards into /src/dfi folder of the repo.
 
@@ -68,7 +68,7 @@ Creating covid-19_iris_1 ... done
 ```
 
 Click on the ObjectScript status bar and select Refresh connection in the menu.
-Wait for VSCode to make connection and show something like "localhost:32778[IRISAPP] - Connected"
+Wait for VSCode to make connection and show something like "localhost:32778[USER] - Connected"
 
 You can start coding after that. 
 
