@@ -40,13 +40,9 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         context: .
-        push: false
+        push: true
         load: true
-        tags: ${GCR_LOCATION}/${PROJECT_ID}/${IMAGE_NAME}:${{ github.sha }}
-
-    - name: Build Push image
-      run: |
-        docker push ${GCR_LOCATION}/${PROJECT_ID}/${IMAGE_NAME}:${GITHUB_SHA}
+        tags: ${GCR_LOCATION}/${PROJECT_ID}/${IMAGE_NAME}:${GITHUB_SHA}
 
     - name: Deploy to Cloud Run
       run: |
