@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="Cache" version="25">
+  <Document name="evshvarov-covid19-analytics.ZPM">
+    <Module>
+      <Name>evshvarov-covid19-analytics</Name>
+      <Version>1.0.0</Version>
+      <Dependencies>
+        <ModuleReference>
+          <Name>dsw</Name>
+          <Version>3.*</Version>
+        </ModuleReference>
+        <ModuleReference>
+          <Name>csvgen</Name>
+          <Version>*</Version>
+        </ModuleReference>
+      </Dependencies>
+      <Packaging>module</Packaging>
+      <SourcesRoot>src</SourcesRoot>
+      <Resource Name="Covid19.PKG"/>
+      <Resource Name="AnalyzeThis.PKG"/>
+      <Resource Name="USA.PKG"/>
+      <Resource Name="DeepSee.TermList.GBL" />
+      <Resource Name="*.DFI" />
+      <Invokes>
+        <Invoke Class="Covid19.Utils" Method="CreateSSL">
+        </Invoke>
+        <Invoke Class="Covid19.Utils" Method="ImportData">
+        </Invoke>
+        <Invoke Class="Covid19.Utils" Method="BISetup">
+        </Invoke>
+        <Invoke Class="Covid19.Utils" Method="CreateTask">
+        </Invoke>
+        <Invoke Class="Covid19.Utils" Method="OpenToPublic">
+        </Invoke>     
+      </Invokes>
+      <Parameter Name="folder" Value="user" />
+      <FileCopy Name="js/uspolygons.js" Target="${cspdir}${folder}/uspolygons.js"/>
+      <FileCopy Name="dsw/user.json" Target="${cspdir}dsw/configs/${folder}.json"/>
+    </Module>
+  </Document>
+</Export>

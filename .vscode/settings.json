@@ -7,14 +7,14 @@
     "objectscript.conn" :{
       "username": "_SYSTEM",
       "password": "SYS",
-      "ns": "IRISAPP",
+      "ns": "USER",
       "active": true,
       "docker-compose": {
         "service": "iris",
         "internalPort": 52773
       },"links": {
-        "COVID-19 Analytics": "http://localhost:${port}/dsw/index.html#!/?ns=IRISAPP",
-        "Architect": "http://localhost:${port}/csp/irisapp/_DeepSee.UI.Architect.zen?$NAMESPACE=IRISAPP"
+        "COVID-19 Analytics": "http://localhost:${port}/dsw/index.html#/USER",
+        "Architect": "http://localhost:${port}/csp/user/_DeepSee.UI.Architect.zen?$NAMESPACE=USER"
       }
     }
 }

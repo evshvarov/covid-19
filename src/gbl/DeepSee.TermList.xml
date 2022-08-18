@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="Cache">
+<Global>
+<Node><Sub>^DeepSee.TermList</Sub>
+<Node><Sub>COVID19 USA</Sub>
+<Node><Sub>data</Sub>
+<Node><Sub>Confirmed</Sub>
+<Node><Sub>VALUE</Sub>
+<Data>Covid19/USA/ConfirmedOnMap.pivot</Data>
+</Node>
+</Node>
+<Node><Sub>Deaths</Sub>
+<Node><Sub>VALUE</Sub>
+<Data>Covid19/USA/DeathsOnMap.pivot</Data>
+</Node>
+</Node>
+</Node>
+<Node><Sub>modDate</Sub>
+<Data>2020-04-09 16:52:13</Data>
+</Node>
+<Node><Sub>name</Sub>
+<Data>Covid19 USA</Data>
+</Node>
+</Node>
+<Node><Sub>COVIDUSA</Sub>
+<Node><Sub>caption</Sub>
+<Data>COVID</Data>
+</Node>
+<Node><Sub>data</Sub>
+<Node><Sub>Confirmed</Sub>
+<Node><Sub>VALUE</Sub>
+<Data>USA/USMapArea.pivot</Data>
+</Node>
+</Node>
+<Node><Sub>Deaths</Sub>
+<Node><Sub>VALUE</Sub>
+<Data>USA/USMapDensity.pivot</Data>
+</Node>
+</Node>
+</Node>
+<Node><Sub>modDate</Sub>
+<Data>2016-11-30 15:56:38</Data>
+</Node>
+<Node><Sub>name</Sub>
+<Data>Election Votes</Data>
+</Node>
+</Node>
+<Node><Sub>ELECTION VOTES</Sub>
+<Node><Sub>data</Sub>
+<Node><Sub>Votes Temperature</Sub>
+<Node><Sub>VALUE</Sub>
+<Data>USA/Elections.pivot</Data>
+</Node>
+</Node>
+<Node><Sub>Winner Takes All</Sub>
+<Node><Sub>VALUE</Sub>
+<Data>USA/Elections2.pivot</Data>
+</Node>
+</Node>
+</Node>
+<Node><Sub>modDate</Sub>
+<Data>2016-11-30 15:56:38</Data>
+</Node>
+<Node><Sub>name</Sub>
+<Data>Election Votes</Data>
+</Node>
+</Node>
+<Node><Sub>USMAPSOURCES</Sub>
+<Node><Sub>caption</Sub>
+<Data>Map Sources</Data>
+</Node>
+<Node><Sub>data</Sub>
+<Node><Sub>Area</Sub>
+<Node><Sub>VALUE</Sub>
+<Data>USA/USMapArea.pivot</Data>
+</Node>
+</Node>
+<Node><Sub>Density</Sub>
+<Node><Sub>VALUE</Sub>
+<Data>USA/USMapDensity.pivot</Data>
+</Node>
+</Node>
+<Node><Sub>Population</Sub>
+<Node><Sub>VALUE</Sub>
+<Data>USA/US Map Population.pivot</Data>
+</Node>
+</Node>
+</Node>
+<Node><Sub>modDate</Sub>
+<Data>2016-03-11 01:36:04</Data>
+</Node>
+<Node><Sub>name</Sub>
+<Data>USMapSources</Data>
+</Node>
+</Node>
+</Node>
+</Global>
+</Export>

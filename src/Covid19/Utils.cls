@@ -9,6 +9,13 @@ Parameter TSrecovered = "csse_covid_19_time_series/time_series_covid19_recovered
 
 Parameter TSYesterdayFile = "csse_covid_19_daily_reports/";
 
+
+ClassMethod CreateSSL()
+{
+    
+    x "n $namespace set $namespace=""%SYS"", name=""default"" do:'##class(Security.SSLConfigs).Exists(name) ##class(Security.SSLConfigs).Create(name)"
+}
+
 ClassMethod ImportCountries()
 {
   zw ##class(community.csvgen).GenerateFromURL("https://raw.githubusercontent.com/datasciencedojo/datasets/master/WorldDBTables/CountryTable.csv",",","Covid19.Countries")
@@ -72,7 +79,7 @@ ClassMethod BISetup() As %Status
   do ##class(USA.Utils).Setup()
   do ##class(USA.Covid).ImportData()
   do ##class(USA.Covid).GrantSQLAccess()
-  do ##class(%DeepSee.Utils).%BuildCube("CovidCube")
+  do ##class(%DeepSee.Utils).%BuildCube("CovidCube",0)
   return $$$OK
 }
 
@@ -189,7 +196,7 @@ ClassMethod OpenToPublic()
   write "Modify MDX2JSON application security...",! 
   set webName = "/mdx2json" 
   set webProperties("AutheEnabled") = 64 
-  set webProperties("MatchRoles")=":%DB_IRISAPP" 
+  set webProperties("MatchRoles")=":%DB_USER" 
   set sc = ##class(Security.Applications).Modify(webName, .webProperties) 
   if 'sc zw sc
   $$$ThrowOnError(sc)

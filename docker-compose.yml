@@ -5,6 +5,8 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: always
+    command: --check-caps false
+
     ports: 
       - 51773
       - 32916:52773
