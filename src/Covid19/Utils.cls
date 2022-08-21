@@ -9,7 +9,6 @@ Parameter TSrecovered = "csse_covid_19_time_series/time_series_covid19_recovered
 
 Parameter TSYesterdayFile = "csse_covid_19_daily_reports/";
 
-
 ClassMethod CreateSSL()
 {
     
@@ -38,9 +37,9 @@ where name='united States')
 ClassMethod UpdatePopulation()
 {
   &sql(
-  Update AnalyzeThis_Generated.covid03162020 as t1
+  Update evshvarov_Covid19.Snapshot as t1
   SET t1.Population=t2.Population
-  FROM AnalyzeThis_Generated.covid03162020 as t1 
+  FROM evshvarov_Covid19.Snapshot as t1 
   Inner Join Covid19.Countries as t2 on t1.CountryRegion=t2.name)
   if SQLCODE < 0 throw ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,"Add Population")
 }
@@ -49,7 +48,7 @@ ClassMethod DailyUpdate() As %Status
 {
   set sc=..ImportData()
   if $$$ISERR(sc) return sc
-  set sc=##class(USA.Covid).ImportData()
+  set sc=##class(evshvarov.USA.Covid).ImportData()
   if $$$ISERR(sc) return sc
   set sc=##class(%DeepSee.Utils).%BuildCube("CovidCube")
   return sc
@@ -61,7 +60,7 @@ ClassMethod ImportData() As %Status
   set pYesterdayFile=..#TSYesterdayFile_$tr($zd($h-1),"/","-")_".csv"
   
   set streamYesterday=..GetStreamFromRepo(pYesterdayFile)
-  do ##class(AnalyzeThis.Generated.covid03162020).ImportFromStream(,streamYesterday,,,1,.rc)
+  do ##class(evshvarov.Covid19.Snapshot).ImportFromStream(,streamYesterday,,,1,.rc)
   //do ##class(AnalyzeThis.Generated.covid03162020).Import(,pfile,",", ,1,.rc) 
 
   write "imported records: "_rc 
@@ -76,9 +75,9 @@ ClassMethod ImportData() As %Status
 
 ClassMethod BISetup() As %Status
 {
-  do ##class(USA.Utils).Setup()
-  do ##class(USA.Covid).ImportData()
-  do ##class(USA.Covid).GrantSQLAccess()
+  do ##class(evshvarov.USA.Utils).Setup()
+  do ##class(evshvarov.USA.Covid).ImportData()
+  do ##class(evshvarov.USA.Covid).GrantSQLAccess()
   do ##class(%DeepSee.Utils).%BuildCube("CovidCube",0)
   return $$$OK
 }

@@ -17,8 +17,8 @@
       <Packaging>module</Packaging>
       <SourcesRoot>src</SourcesRoot>
       <Resource Name="Covid19.PKG"/>
-      <Resource Name="AnalyzeThis.PKG"/>
-      <Resource Name="USA.PKG"/>
+      <Resource Name="evshvarov.Covid19.PKG"/>
+      <Resource Name="evshvarov.USA.PKG"/>
       <Resource Name="DeepSee.TermList.GBL" />
       <Resource Name="*.DFI" />
       <Invokes>

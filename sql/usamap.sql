@@ -1,6 +1,6 @@
 SELECT 
 ID, ProvinceState, sum(Confirmed), sum(Deaths), sum(Recovered)
-FROM AnalyzeThis_Generated.covid03162020
+FROM evshvarov_Covid19.Snapshot
 LEFT OUTER JOIN 
 Where CountryRegion='US'
 group by ProvinceState
@@ -8,16 +8,16 @@ group by ProvinceState
 
 SELECT 
 ProvinceState, sum(Confirmed), sum(Deaths), reg.Guid
-FROM AnalyzeThis_Generated.covid03162020 cov
-LEFT OUTER JOIN USA.Region reg ON cov.ProvinceState = reg.Name
+FROM evshvarov_Covid19.Snapshot cov
+LEFT OUTER JOIN evshvarov_USA.Region reg ON cov.ProvinceState = reg.Name
 Where CountryRegion='US'
 group by ProvinceState
 
 
 select * from (SELECT 
 ProvinceState as name, Null as ParentName, sum(Confirmed) as Confirmed, sum(Deaths) as Deaths, reg.Guid, Null as ParentRegion
-FROM AnalyzeThis_Generated.covid03162020 cov
-LEFT OUTER JOIN USA.Region reg ON cov.ProvinceState = reg.Name
+FROM evshvarov_Covid19.Snapshot cov
+LEFT OUTER JOIN evshvarov_USA.Region reg ON cov.ProvinceState = reg.Name
 Where CountryRegion='US'
 group by ProvinceState
 
@@ -25,16 +25,16 @@ union
 
 SELECT 
 City as Name, state.Name as ParentName, Confirmed, Deaths, county.Guid, state.Guid as ParentRegion
-FROM AnalyzeThis_Generated.covid03162020 cov
+FROM evshvarov_Covid19.Snapshot cov
 LEFT OUTER JOIN (
 SELECT 
 ProvinceState as name, reg.Guid as guid
-FROM AnalyzeThis_Generated.covid03162020 cov2
-LEFT OUTER JOIN USA.Region reg ON cov2.ProvinceState = reg.Name
+FROM evshvarov_Covid19.Snapshot cov2
+LEFT OUTER JOIN evshvarov_USA.Region reg ON cov2.ProvinceState = reg.Name
 Where CountryRegion='US'
 group by ProvinceState
 ) as state ON state.name =  cov.ProvinceState
-LEFT OUTER JOIN USA.Region county ON cov.City = county.Name AND county.parentregion = state.guid
+LEFT OUTER JOIN evshvarov_USA.Region county ON cov.City = county.Name AND county.parentregion = state.guid
 Where CountryRegion='US' )
 where guid is not NULL
 order by Name
@@ -51,8 +51,8 @@ OREGON
 
 select * from (SELECT 
 ProvinceState as name, Null as ParentName, sum(Confirmed) as Confirmed, sum(Deaths) as Deaths, reg.Guid, Null as ParentRegion
-FROM AnalyzeThis_Generated.covid03162020 cov
-LEFT OUTER JOIN USA.Region reg ON cov.ProvinceState = reg.Name AND reg.ParentRegion IS NULL
+FROM evshvarov_Covid19.Snapshot cov
+LEFT OUTER JOIN evshvarov_USA.Region reg ON cov.ProvinceState = reg.Name AND reg.ParentRegion IS NULL
 Where CountryRegion='US'
 group by ProvinceState
 
@@ -60,16 +60,16 @@ union
 
 SELECT 
 City as Name, state.Name as ParentName, Confirmed, Deaths, county.Guid, state.Guid as ParentRegion
-FROM AnalyzeThis_Generated.covid03162020 cov
+FROM evshvarov_Covid19.Snapshot cov
 LEFT OUTER JOIN (
 SELECT 
 ProvinceState as name, reg.Guid as guid
-FROM AnalyzeThis_Generated.covid03162020 cov2
-LEFT OUTER JOIN USA.Region reg ON cov2.ProvinceState = reg.Name AND reg.ParentRegion IS NULL
+FROM evshvarov_Covid19.Snapshot cov2
+LEFT OUTER JOIN evshvarov_USA.Region reg ON cov2.ProvinceState = reg.Name AND reg.ParentRegion IS NULL
 Where CountryRegion='US'
 group by ProvinceState
 ) as state ON state.name =  cov.ProvinceState
-LEFT OUTER JOIN USA.Region county ON cov.City = county.Name AND county.parentregion = state.guid
+LEFT OUTER JOIN evshvarov_USA.Region county ON cov.City = county.Name AND county.parentregion = state.guid
 Where CountryRegion='US' )
 where guid is not NULL
 

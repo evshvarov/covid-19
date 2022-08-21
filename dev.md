@@ -29,4 +29,5 @@ if SQLCODE < 0 throw ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,"Context"
 ```
 
 
-update for 3.1.10
+AnalyzeThis.Generated.covid03162020
+evshvarov.Covid19.Snapshot
