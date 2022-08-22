@@ -1,4 +1,4 @@
-Class Covid19.Countries Extends %Library.Persistent [ Not Abstract, DdlAllowed, Not LegacyInstanceContext, ProcedureBlock ]
+Class evshvarov.Covid19.Countries Extends %Library.Persistent [ Not Abstract, DdlAllowed, Not LegacyInstanceContext, ProcedureBlock ]
 {
 
 Property code As %Library.String(MAXLEN = 250) [ SqlColumnNumber = 2 ];
@@ -159,11 +159,11 @@ Storage Default
 <Value>code2</Value>
 </Value>
 </Data>
-<DataLocation>^Covid19.CountriesD</DataLocation>
+<DataLocation>^evshvarov.Covid19CountriesD</DataLocation>
 <DefaultData>CountriesDefaultData</DefaultData>
-<IdLocation>^Covid19.CountriesD</IdLocation>
-<IndexLocation>^Covid19.CountriesI</IndexLocation>
-<StreamLocation>^Covid19.CountriesS</StreamLocation>
+<IdLocation>^evshvarov.Covid19CountriesD</IdLocation>
+<IndexLocation>^evshvarov.Covid19CountriesI</IndexLocation>
+<StreamLocation>^evshvarov.Covid19CountriesS</StreamLocation>
 <Type>%Storage.Persistent</Type>
 }
 

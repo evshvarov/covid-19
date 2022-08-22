@@ -19,7 +19,7 @@ d ##class(dev.code).export("*.DFI")
 
 ## import countries
 ```
-d ##class(community.csvgen).GenerateFromURL("https://raw.githubusercontent.com/datasciencedojo/datasets/master/WorldDBTables/CountryTable.csv",",","Covid19.Countries")
+d ##class(community.csvgen).GenerateFromURL("https://raw.githubusercontent.com/datasciencedojo/datasets/master/WorldDBTables/CountryTable.csv",",","covid19.Countries")
 ```
 
 ## sql error handling
@@ -30,4 +30,4 @@ if SQLCODE < 0 throw ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,"Context"
 
 
 AnalyzeThis.Generated.covid03162020
-evshvarov.Covid19.Snapshot
+evshvarov.covid19.Snapshot

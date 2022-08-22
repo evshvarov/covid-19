@@ -16,5 +16,4 @@
     set sc = ##class(Security.Applications).Modify(webName, .webProperties) 
     if sc<1 write $SYSTEM.OBJ.DisplayError(sc) 
 
-    ;do ##class(Covid19.Utils).OpenToPublic()
     halt

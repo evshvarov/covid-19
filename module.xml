@@ -16,21 +16,20 @@
       </Dependencies>
       <Packaging>module</Packaging>
       <SourcesRoot>src</SourcesRoot>
-      <Resource Name="Covid19.PKG"/>
       <Resource Name="evshvarov.Covid19.PKG"/>
       <Resource Name="evshvarov.USA.PKG"/>
       <Resource Name="DeepSee.TermList.GBL" />
       <Resource Name="*.DFI" />
       <Invokes>
-        <Invoke Class="Covid19.Utils" Method="CreateSSL">
+        <Invoke Class="evshvarov.Covid19.Utils" Method="CreateSSL">
         </Invoke>
-        <Invoke Class="Covid19.Utils" Method="ImportData">
+        <Invoke Class="evshvarov.Covid19.Utils" Method="ImportData">
         </Invoke>
-        <Invoke Class="Covid19.Utils" Method="BISetup">
+        <Invoke Class="evshvarov.Covid19.Utils" Method="BISetup">
         </Invoke>
-        <Invoke Class="Covid19.Utils" Method="CreateTask">
+        <Invoke Class="evshvarov.Covid19.Utils" Method="CreateTask">
         </Invoke>
-        <Invoke Class="Covid19.Utils" Method="OpenToPublic">
+        <Invoke Class="evshvarov.Covid19.Utils" Method="OpenToPublic">
         </Invoke>     
       </Invokes>
       <Parameter Name="folder" Value="user" />

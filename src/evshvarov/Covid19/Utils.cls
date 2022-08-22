@@ -1,4 +1,4 @@
-Class Covid19.Utils
+Class evshvarov.Covid19.Utils
 {
 
 Parameter TSConfirmed = "csse_covid_19_time_series/time_series_covid19_confirmed_global.csv";
@@ -17,18 +17,18 @@ ClassMethod CreateSSL()
 
 ClassMethod ImportCountries()
 {
-  zw ##class(community.csvgen).GenerateFromURL("https://raw.githubusercontent.com/datasciencedojo/datasets/master/WorldDBTables/CountryTable.csv",",","Covid19.Countries")
+  zw ##class(community.csvgen).GenerateFromURL("https://raw.githubusercontent.com/datasciencedojo/datasets/master/WorldDBTables/CountryTable.csv",",","evshvarov.Covid19.Countries")
 }
 
 ClassMethod CleanCountriesData()
 {
-  &sql(Update Covid19.Countries
+  &sql(Update evshvarov_Covid19.Countries
 Set name='Russia'
 where name='Russian Federation')
   if SQLCODE < 0 throw ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,"Change Russia")
 
 
-  &sql(Update Covid19.Countries
+  &sql(Update evshvarov_Covid19.Countries
 Set name='United States of America'
 where name='united States')
   if SQLCODE < 0 throw ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,"Change the USA")
@@ -40,7 +40,7 @@ ClassMethod UpdatePopulation()
   Update evshvarov_Covid19.Snapshot as t1
   SET t1.Population=t2.Population
   FROM evshvarov_Covid19.Snapshot as t1 
-  Inner Join Covid19.Countries as t2 on t1.CountryRegion=t2.name)
+  Inner Join evshvarov_Covid19.Countries as t2 on t1.CountryRegion=t2.name)
   if SQLCODE < 0 throw ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,"Add Population")
 }
 
@@ -179,7 +179,7 @@ ClassMethod CreateTask() As %Status
 	Set task.DailyEndTime = 86399 // End at 23:59:59
 	Set task.StartDate = $p($H,",",1) // Start today
 	
-	Set taskdef = ##class(Covid19.UpdateTask).%New()
+	Set taskdef = ##class(evshvarov.Covid19.UpdateTask).%New()
 	Do task.AssignSettings(taskdef)
 	Set task.TaskClass=$classname(taskdef)
 	

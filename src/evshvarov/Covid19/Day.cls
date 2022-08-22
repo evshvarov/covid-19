@@ -1,4 +1,4 @@
-Class Covid19.Day Extends %Persistent
+Class evshvarov.Covid19.Day Extends %Persistent
 {
 
 Property Confirmed As %Integer;
@@ -46,11 +46,11 @@ Storage Default
 <Value>DeathsNew</Value>
 </Value>
 </Data>
-<DataLocation>^Covid19.DayD</DataLocation>
+<DataLocation>^evshvarov.Covid19DayD</DataLocation>
 <DefaultData>DayDefaultData</DefaultData>
-<IdLocation>^Covid19.DayD</IdLocation>
-<IndexLocation>^Covid19.DayI</IndexLocation>
-<StreamLocation>^Covid19.DayS</StreamLocation>
+<IdLocation>^evshvarov.Covid19DayD</IdLocation>
+<IndexLocation>^evshvarov.Covid19DayI</IndexLocation>
+<StreamLocation>^evshvarov.Covid19DayS</StreamLocation>
 <Type>%Storage.Persistent</Type>
 }
 

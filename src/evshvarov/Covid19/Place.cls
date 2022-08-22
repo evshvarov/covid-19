@@ -1,4 +1,4 @@
-Class Covid19.Place Extends %Persistent
+Class evshvarov.Covid19.Place Extends %Persistent
 {
 
 Property CountryRegion As %String(MAXLEN = "");
@@ -28,11 +28,11 @@ Storage Default
 <Value>ProvinceState</Value>
 </Value>
 </Data>
-<DataLocation>^Covid19.PlaceD</DataLocation>
+<DataLocation>^evshvarov.Covid19PlaceD</DataLocation>
 <DefaultData>PlaceDefaultData</DefaultData>
-<IdLocation>^Covid19.PlaceD</IdLocation>
-<IndexLocation>^Covid19.PlaceI</IndexLocation>
-<StreamLocation>^Covid19.PlaceS</StreamLocation>
+<IdLocation>^evshvarov.Covid19PlaceD</IdLocation>
+<IndexLocation>^evshvarov.Covid19PlaceI</IndexLocation>
+<StreamLocation>^evshvarov.Covid19PlaceS</StreamLocation>
 <Type>%Storage.Persistent</Type>
 }
 

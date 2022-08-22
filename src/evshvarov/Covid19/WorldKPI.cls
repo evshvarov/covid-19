@@ -1,6 +1,6 @@
 /// Use or operation of this code is subject to acceptance of the license available in the code repository for this code.
 /// Example KPI definition using SQL statements against the HoleFoods transaction data.
-Class Covid19.WorldKPI Extends %DeepSee.KPI
+Class evshvarov.Covid19.WorldKPI Extends %DeepSee.KPI
 {
 
 /// This XData definition defines the KPI.
