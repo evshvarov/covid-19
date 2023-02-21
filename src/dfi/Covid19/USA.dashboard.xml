@@ -23,6 +23,8 @@
     </control>
   </widget>
   <widget name="W4" type="meter" subtype="textMeter" subtypeClass="" title="Data" dataSource="Covid19/Status.pivot" dataLink="" drillDownDataSource="" width="200" height="200" sidebarContent="" showSidebar="false" sidebarWidth="" maximized="false" homeRowL="6" homeColL="5" colSpanL="4" rowSpanL="4" showToolbar="true" showToolbarBottomBorder="true" showToolbarOnlyWhenMaximized="false" colorToolbar="#F0F0F0" opacityToolbar="1" backgroundColor="#F0F0F0" opacity="1" theme="" dataColorList="">
+    <dataProperty name="" label="" width="" align="" subtype="" style="" display="" format="" showAs="" valueColumn="false" summary="" summaryValue="" dataValue="Confirmed" targetValue="" thresholdLower="" thresholdUpper="" rangeLower="" rangeUpper="" baseValue="" override=""></dataProperty>
+    <dataProperty name="" label="" width="" align="" subtype="" style="" display="" format="" showAs="" valueColumn="false" summary="" summaryValue="" dataValue="Deaths" targetValue="" thresholdLower="" thresholdUpper="" rangeLower="" rangeUpper="" baseValue="" override=""></dataProperty>
   </widget>
 </dashboard>
 </Document></Export>

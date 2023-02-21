@@ -12,7 +12,8 @@
       "docker-compose": {
         "service": "iris",
         "internalPort": 52773
-      },"links": {
+      },
+      "links": {
         "COVID-19 Analytics": "http://localhost:${port}/dsw/index.html#/USER",
         "Architect": "http://localhost:${port}/csp/user/_DeepSee.UI.Architect.zen?$NAMESPACE=USER"
       }

@@ -22,9 +22,11 @@
     </control>
   </widget>
   <widget name="Widget3" type="meter" subtype="textMeter" subtypeClass="" title="Deaths" dataSource="Covid19/DeathsTotal.pivot" dataLink="" drillDownDataSource="" width="200" height="200" sidebarContent="" showSidebar="false" sidebarWidth="" maximized="false" homeRowL="4" homeColL="6" colSpanL="4" rowSpanL="4" showToolbar="true" showToolbarBottomBorder="true" showToolbarOnlyWhenMaximized="false" colorToolbar="#F0F0F0" opacityToolbar="1" backgroundColor="#F0F0F0" opacity="1" theme="" dataColorList="">
+    <dataProperty name="" label="" width="" align="" subtype="" style="" display="" format="" showAs="" valueColumn="false" summary="" summaryValue="" dataValue="All Time/DeathsNew" targetValue="" thresholdLower="" thresholdUpper="" rangeLower="" rangeUpper="" baseValue="" override=""></dataProperty>
     <property name="format">#,###</property>
   </widget>
   <widget name="Widget4" type="meter" subtype="textMeter" subtypeClass="" title="Confirmed" dataSource="Covid19/ConfirmedTotal.pivot" dataLink="" drillDownDataSource="" width="200" height="200" sidebarContent="" showSidebar="false" sidebarWidth="" maximized="false" homeRowL="0" homeColL="6" colSpanL="4" rowSpanL="4" showToolbar="true" showToolbarBottomBorder="true" showToolbarOnlyWhenMaximized="false" colorToolbar="#F0F0F0" opacityToolbar="1" backgroundColor="#F0F0F0" opacity="1" theme="" dataColorList="">
+    <dataProperty name="" label="" width="" align="" subtype="" style="" display="" format="" showAs="" valueColumn="false" summary="" summaryValue="" dataValue="All Time/ConfirmedNew" targetValue="" thresholdLower="" thresholdUpper="" rangeLower="" rangeUpper="" baseValue="" override=""></dataProperty>
   </widget>
 </dashboard>
 </Document></Export>
