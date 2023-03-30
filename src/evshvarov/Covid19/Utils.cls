@@ -57,7 +57,9 @@ ClassMethod DailyUpdate() As %Status
 ClassMethod ImportData() As %Status
 {
   set rc=0 
-  set pYesterdayFile=..#TSYesterdayFile_$tr($zd($h-1),"/","-")_".csv"
+  //set pYesterdayFile=..#TSYesterdayFile_$tr($zd($h-1),"/","-")_".csv"
+  // hardcode the day as the github repo https://github.com/CSSEGISandData/COVID-19 is archived.
+  set pYesterdayFile=..#TSYesterdayFile_"03-03-2023.csv"
   
   set streamYesterday=..GetStreamFromRepo(pYesterdayFile)
   do ##class(evshvarov.Covid19.Snapshot).ImportFromStream(,streamYesterday,,,1,.rc)
