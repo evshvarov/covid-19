@@ -2,7 +2,7 @@
     zn "USER" 
     
     zpm "install isc-dev" 
-    do ##class(dev.code).workdir("/irisdev/app/src") 
+    do ##class(dev.code).workdir("/home/irisowner/irisdev/src") 
     do EnableDeepSee^%SYS.cspServer("/csp/user/") 
 
     zpm "load /home/irisowner/irisdev/ -v"
