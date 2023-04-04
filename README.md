@@ -29,7 +29,7 @@ Pivots and Dashboards were built manually using [InterSystems IRIS Analytics](ht
 [DSW](https://openexchange.intersystems.com/package/DeepSeeWeb) is used to design representation layer
 [ISC-DEV](https://openexchange.intersystems.com/package/ISC-DEV) module was used to export pivot and dashboard.
 
-To export Pivot and Dashboard changes do:
+To export changes in Pivots and Dashboards do:
 ```
 USER> do ##class(dev.code).export("*.DFI")
 ```
