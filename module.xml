@@ -20,6 +20,8 @@
       <Resource Name="evshvarov.USA.PKG"/>
       <Resource Name="DeepSee.TermList.GBL" />
       <Resource Name="*.DFI" />
+      <Resource Name="bubble chart.dashboard.DFI"/>
+      <Resource Name="Countries_bubble.pivot.DFI"/>
       <Invokes>
         <Invoke Class="evshvarov.Covid19.Utils" Method="CreateSSL">
         </Invoke>
