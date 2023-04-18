@@ -72,4 +72,4 @@ Wait for VSCode to make connection and show something like "localhost:32778[USER
 
 You can start coding after that. 
 
-Contributions are welcome via Pull Requests
+Contributions are welcome via Pull Requests.
