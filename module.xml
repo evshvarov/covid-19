@@ -3,7 +3,7 @@
   <Document name="evshvarov-covid19-analytics.ZPM">
     <Module>
       <Name>evshvarov-covid19-analytics</Name>
-      <Version>1.0.10</Version>
+      <Version>1.0.11</Version>
       <Dependencies>
         <ModuleReference>
           <Name>dsw</Name>
